@@ -6,19 +6,19 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
-  <servlet>
+<!--   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>gr.teicrete.ie.oop2.gwtswingsync.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>gr.istl.virtualtoolkitsc.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/gwtswingsync/greet</url-pattern>
-  </servlet-mapping>
+    <url-pattern>/virtualtoolkitsc/greet</url-pattern>
+  </servlet-mapping> -->
   
   <!-- Default page to serve -->
   <welcome-file-list>
-    <welcome-file>GwtSwingSync.html</welcome-file>
+    <welcome-file>VirtualToolkitSC.html</welcome-file>
   </welcome-file-list>
 
 </web-app>
