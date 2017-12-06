@@ -15,9 +15,8 @@ public class VirtualToolkitSC implements EntryPoint{
 		UIFactory factory = UIFactory.getFactory(Architecture.GWT);
 		AbstractWindow window = factory.createWindow();
 		AbstractFlowPanel panel = factory.createFlowPanel();
-		AbstractButton button = factory.createButton();
+		AbstractButton button = factory.createButton("button_1", null);
 		
-		button.setButtonText("button_1");
 		button.addAbstractMouseListener(factory.createButtonHandler(button));
 				
 		panel.addButton(button);

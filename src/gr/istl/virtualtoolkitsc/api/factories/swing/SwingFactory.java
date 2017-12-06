@@ -1,6 +1,6 @@
 package gr.istl.virtualtoolkitsc.api.factories.swing;
 
-import javax.swing.JButton;
+import com.google.firebase.database.FirebaseDatabase;
 
 import gr.istl.virtualtoolkitsc.api.factories.abstraction.UIFactory;
 import gr.istl.virtualtoolkitsc.api.listeners.abstraction.AbstractButtonHandler;
@@ -25,13 +25,13 @@ public class SwingFactory extends UIFactory {
 	}
 
 	@Override
-	public AbstractButton createButton() {
-		return new SwingButton();
+	public AbstractButton createButton(String text, FirebaseDatabase db) {
+		return new SwingButton(text, db);
 	}
 
 	@Override
 	public AbstractButtonHandler createButtonHandler(AbstractButton button) {
-		return new SwingButtonHandler((JButton)button);
+		return new SwingButtonHandler((SwingButton)button);
 	}
 
 }

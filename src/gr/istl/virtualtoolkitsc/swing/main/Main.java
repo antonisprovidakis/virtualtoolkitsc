@@ -33,12 +33,10 @@ public class Main {
 
 			defaultApp = FirebaseApp.initializeApp(options);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Credentials File not found.");
 			System.exit(1);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("IO error.");
 			System.exit(1);
@@ -46,28 +44,13 @@ public class Main {
 		
 		FirebaseDatabase db = FirebaseDatabase.getInstance(defaultApp);
 		
-		DatabaseReference fbButton1 = db.getReference("session1/button_1");
-		fbButton1.addValueEventListener(new ValueEventListener() {
-			
-			@Override
-			public void onDataChange(DataSnapshot snapshot) {
-				System.out.println("value changed: " + snapshot.getValue());
-			}
-			
-			@Override
-			public void onCancelled(DatabaseError error) {
-			}
-		});
-		
-		fbButton1.setValueAsync(false);
 
 		UIFactory factory = UIFactory.getFactory(Architecture.SWING);
 
 		AbstractWindow window = factory.createWindow();
 		AbstractFlowPanel panel = factory.createFlowPanel();
-		AbstractButton button = factory.createButton();
+		AbstractButton button = factory.createButton("button_1", db);
 
-		button.setButtonText("button_1");
 		button.addAbstractMouseListener(factory.createButtonHandler(button));
 
 		panel.addButton(button);

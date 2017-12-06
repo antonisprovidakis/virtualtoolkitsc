@@ -1,7 +1,6 @@
 package gr.istl.virtualtoolkitsc.api.factories.gwt;
 
-import com.google.gwt.user.client.ui.Button;
-
+import com.google.firebase.database.FirebaseDatabase;
 import gr.istl.virtualtoolkitsc.api.factories.abstraction.UIFactory;
 import gr.istl.virtualtoolkitsc.api.listeners.abstraction.AbstractButtonHandler;
 import gr.istl.virtualtoolkitsc.api.listeners.gwt.GWTButtonHandler;
@@ -25,13 +24,13 @@ public class GWTFactory extends UIFactory {
 	}
 
 	@Override
-	public AbstractButton createButton() {
-		return new GWTButton();
+	public AbstractButton createButton(String text, FirebaseDatabase db) {
+		return new GWTButton(text, db);
 	}
-		
+
 	@Override
 	public AbstractButtonHandler createButtonHandler(AbstractButton button) {
-		return new GWTButtonHandler((Button) button);
+		return new GWTButtonHandler((GWTButton) button);
 	}
 
 }

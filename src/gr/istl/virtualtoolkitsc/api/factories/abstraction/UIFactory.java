@@ -1,5 +1,7 @@
 package gr.istl.virtualtoolkitsc.api.factories.abstraction;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import gr.istl.virtualtoolkitsc.api.factories.gwt.GWTFactory;
 import gr.istl.virtualtoolkitsc.api.factories.swing.SwingFactory;
 import gr.istl.virtualtoolkitsc.api.listeners.abstraction.AbstractButtonHandler;
@@ -32,7 +34,7 @@ public abstract class UIFactory {
 
 	public abstract AbstractFlowPanel createFlowPanel();
 
-	public abstract AbstractButton createButton();
+	public abstract AbstractButton createButton(String text, FirebaseDatabase db);
 	
 	public abstract AbstractButtonHandler createButtonHandler(AbstractButton button);
 
