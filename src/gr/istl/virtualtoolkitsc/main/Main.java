@@ -2,9 +2,9 @@ package gr.istl.virtualtoolkitsc.main;
 
 import gr.istl.virtualtoolkitsc.api.factories.WidgetFactory;
 import gr.istl.virtualtoolkitsc.api.factories.WidgetFactory.Architecture;
-import gr.istl.virtualtoolkitsc.api.widgets.AbstractButton;
-import gr.istl.virtualtoolkitsc.api.widgets.AbstractFlowPanel;
-import gr.istl.virtualtoolkitsc.api.widgets.AbstractWindow;
+import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractButton;
+import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractFlowPanel;
+import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractWindow;
 
 public class Main {
 

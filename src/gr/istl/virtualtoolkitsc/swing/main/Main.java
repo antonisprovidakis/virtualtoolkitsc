@@ -35,7 +35,7 @@ public class Main {
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("File not found.");
+			System.out.println("Credentials File not found.");
 			System.exit(1);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
