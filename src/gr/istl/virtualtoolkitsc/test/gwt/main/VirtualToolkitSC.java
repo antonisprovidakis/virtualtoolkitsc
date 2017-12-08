@@ -1,12 +1,12 @@
-package gr.istl.virtualtoolkitsc.client;
+package gr.istl.virtualtoolkitsc.test.gwt.main;
 
 import com.google.gwt.core.client.EntryPoint;
 
-import gr.istl.virtualtoolkitsc.api.factories.abstraction.UIFactory;
-import gr.istl.virtualtoolkitsc.api.factories.abstraction.UIFactory.Architecture;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractButton;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractFlowPanel;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractWindow;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractButton;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractFlowPanel;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractWindow;
+import gr.istl.virtualtoolkitsc.api.widgets.UIFactory;
+import gr.istl.virtualtoolkitsc.api.widgets.UIFactory.Architecture;
 
 public class VirtualToolkitSC implements EntryPoint{
 

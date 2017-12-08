@@ -18,17 +18,12 @@
 	<!-- Other module inherits -->
 
 	<!-- Specify the app entry point class. -->
-	<entry-point class='gr.istl.virtualtoolkitsc.client.VirtualToolkitSC' />
+	<entry-point class='gr.istl.virtualtoolkitsc.test.gwt.main.VirtualToolkitSC' />
 
 	<!-- Specify the paths for translatable code -->
-	<source path='client' />
-	<source path='shared' />
-	<source path='api/factories/abstraction' />
-	<source path='api/factories/gwt' />
-	<source path='api/listeners/abstraction' />
-	<source path='api/listeners/gwt' />
-	<source path='api/widgets/abstraction' />
+	<source path='test/gwt/main' />
 	<source path='api/widgets/gwt' />
+<!-- 	<source path='api/widgets' /> -->
 
 
 	<!-- allow Super Dev Mode -->

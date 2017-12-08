@@ -6,8 +6,8 @@ import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.user.client.ui.Button;
 
-import gr.istl.virtualtoolkitsc.api.listeners.abstraction.AbstractButtonHandler;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractButton;
+import gr.istl.virtualtoolkitsc.api.listeners.AbstractButtonHandler;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractButton;
 
 public class GWTButton extends Button implements AbstractButton {
 	private final DatabaseReference dbRef = null;

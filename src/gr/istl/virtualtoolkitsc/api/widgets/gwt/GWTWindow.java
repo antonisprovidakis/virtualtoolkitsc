@@ -2,8 +2,8 @@ package gr.istl.virtualtoolkitsc.api.widgets.gwt;
 
 import com.google.gwt.user.client.ui.RootPanel;
 
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractFlowPanel;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractWindow;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractFlowPanel;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractWindow;
 
 public class GWTWindow implements AbstractWindow {
 

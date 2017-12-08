@@ -1,8 +1,8 @@
-package gr.istl.virtualtoolkitsc.api.listeners.swing;
+package gr.istl.virtualtoolkitsc.api.listeners;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import gr.istl.virtualtoolkitsc.api.listeners.abstraction.AbstractButtonHandler;
+
 import gr.istl.virtualtoolkitsc.api.widgets.swing.SwingButton;
 
 public class SwingButtonHandler extends AbstractButtonHandler implements MouseListener {

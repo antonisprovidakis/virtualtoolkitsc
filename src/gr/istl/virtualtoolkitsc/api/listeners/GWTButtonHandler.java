@@ -1,11 +1,11 @@
-package gr.istl.virtualtoolkitsc.api.listeners.gwt;
+package gr.istl.virtualtoolkitsc.api.listeners;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.event.dom.client.MouseUpHandler;
-import gr.istl.virtualtoolkitsc.api.listeners.abstraction.AbstractButtonHandler;
+
 import gr.istl.virtualtoolkitsc.api.widgets.gwt.GWTButton;
 
 public class GWTButtonHandler extends AbstractButtonHandler implements MouseDownHandler, MouseUpHandler {

@@ -1,4 +1,4 @@
-package gr.istl.virtualtoolkitsc.api.widgets.abstraction;
+package gr.istl.virtualtoolkitsc.api.widgets;
 
 public interface AbstractFlowPanel {
 

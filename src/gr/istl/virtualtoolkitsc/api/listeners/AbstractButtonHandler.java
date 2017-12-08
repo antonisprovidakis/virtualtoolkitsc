@@ -1,6 +1,6 @@
-package gr.istl.virtualtoolkitsc.api.listeners.abstraction;
+package gr.istl.virtualtoolkitsc.api.listeners;
 
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractButton;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractButton;
 
 public abstract class AbstractButtonHandler {
 	private final AbstractButton button;

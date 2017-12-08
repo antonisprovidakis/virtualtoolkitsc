@@ -3,8 +3,8 @@ package gr.istl.virtualtoolkitsc.api.widgets.swing;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractButton;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractFlowPanel;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractButton;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractFlowPanel;
 
 public class SwingFlowPanel extends JPanel implements AbstractFlowPanel {
 

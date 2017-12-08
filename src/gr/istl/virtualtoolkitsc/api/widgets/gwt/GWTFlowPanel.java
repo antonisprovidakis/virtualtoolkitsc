@@ -3,8 +3,8 @@ package gr.istl.virtualtoolkitsc.api.widgets.gwt;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractButton;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractFlowPanel;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractButton;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractFlowPanel;
 
 public class GWTFlowPanel extends FlowPanel implements AbstractFlowPanel{
 

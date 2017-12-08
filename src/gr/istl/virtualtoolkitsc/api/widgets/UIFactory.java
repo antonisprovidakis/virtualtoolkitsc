@@ -1,13 +1,10 @@
-package gr.istl.virtualtoolkitsc.api.factories.abstraction;
+package gr.istl.virtualtoolkitsc.api.widgets;
 
 import com.google.firebase.database.FirebaseDatabase;
 
-import gr.istl.virtualtoolkitsc.api.factories.gwt.GWTFactory;
-import gr.istl.virtualtoolkitsc.api.factories.swing.SwingFactory;
-import gr.istl.virtualtoolkitsc.api.listeners.abstraction.AbstractButtonHandler;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractButton;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractFlowPanel;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractWindow;
+import gr.istl.virtualtoolkitsc.api.listeners.AbstractButtonHandler;
+import gr.istl.virtualtoolkitsc.api.widgets.gwt.GWTFactory;
+import gr.istl.virtualtoolkitsc.api.widgets.swing.SwingFactory;
 
 public abstract class UIFactory {
 

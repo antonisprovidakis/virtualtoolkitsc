@@ -1,8 +1,8 @@
-package gr.istl.virtualtoolkitsc.api.widgets.abstraction;
+package gr.istl.virtualtoolkitsc.api.widgets;
 
 import com.google.firebase.database.DatabaseReference;
 
-import gr.istl.virtualtoolkitsc.api.listeners.abstraction.AbstractButtonHandler;
+import gr.istl.virtualtoolkitsc.api.listeners.AbstractButtonHandler;
 
 public interface AbstractButton {
 

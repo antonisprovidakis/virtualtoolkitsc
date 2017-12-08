@@ -3,8 +3,8 @@ package gr.istl.virtualtoolkitsc.api.widgets.swing;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractFlowPanel;
-import gr.istl.virtualtoolkitsc.api.widgets.abstraction.AbstractWindow;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractFlowPanel;
+import gr.istl.virtualtoolkitsc.api.widgets.AbstractWindow;
 
 public class SwingWindow extends JFrame implements AbstractWindow {
 
