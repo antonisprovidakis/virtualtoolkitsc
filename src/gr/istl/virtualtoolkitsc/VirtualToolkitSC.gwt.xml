@@ -18,7 +18,7 @@
 	<!-- Other module inherits -->
 
 	<!-- Specify the app entry point class. -->
-	<entry-point class='gr.istl.virtualtoolkitsc.test.gwt.main.VirtualToolkitSC' />
+	<entry-point class='gr.istl.virtualtoolkitsc.test.main.GwtMain' />
 
 	<!-- Specify the paths for translatable code -->
 	<source path='test/gwt/main' />

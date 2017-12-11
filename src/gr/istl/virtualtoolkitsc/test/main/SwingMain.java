@@ -1,58 +1,73 @@
-package gr.istl.virtualtoolkitsc.test.swing.main;
+package gr.istl.virtualtoolkitsc.test.main;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionEvent;
+import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
+import gr.istl.virtualtoolkitsc.widgets.ButtonSelector;
+import gr.istl.virtualtoolkitsc.widgets.FrameSelector;
+import gr.istl.virtualtoolkitsc.widgets.GridLayoutSelector;
+import gr.istl.virtualtoolkitsc.widgets.PanelSelector;
+import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
+import gr.istl.virtualtoolkitsc.widgets.VirtualFrame;
+import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
+import gr.istl.virtualtoolkitsc.widgets.VirtualPanel;
+import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
+import gr.istl.virtualtoolkitsc.widgets.swing.SwingToolkit;
 
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-import com.google.firebase.database.FirebaseDatabase;
-
-import gr.istl.virtualtoolkitsc.api.widgets.AbstractButton;
-import gr.istl.virtualtoolkitsc.api.widgets.AbstractFlowPanel;
-import gr.istl.virtualtoolkitsc.api.widgets.AbstractWindow;
-import gr.istl.virtualtoolkitsc.api.widgets.UIFactory;
-import gr.istl.virtualtoolkitsc.api.widgets.UIFactory.Architecture;
-
-public class Main {
+public class SwingMain {
 
 	public static void main(String[] args) {
+		/*
+		 * FirebaseApp defaultApp = null;
+		 * 
+		 * try { FileInputStream serviceAccount = new
+		 * FileInputStream("virtualtoolkitsc-firebase-credentials.json");
+		 * FirebaseOptions options = new FirebaseOptions.Builder()
+		 * .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+		 * .setDatabaseUrl("https://virtualtoolkitsc.firebaseio.com/").build();
+		 * 
+		 * defaultApp = FirebaseApp.initializeApp(options); } catch
+		 * (FileNotFoundException e) { e.printStackTrace();
+		 * System.out.println("Credentials File not found."); System.exit(1); } catch
+		 * (IOException e) { e.printStackTrace(); System.out.println("IO error.");
+		 * System.exit(1); }
+		 * 
+		 * FirebaseDatabase db = FirebaseDatabase.getInstance(defaultApp);
+		 */
 
-		FirebaseApp defaultApp = null;
+		VirtualToolkit.setDefaultToolkit(new SwingToolkit());
 
-		try {
-			FileInputStream serviceAccount = new FileInputStream("virtualtoolkitsc-firebase-credentials.json");
-			FirebaseOptions options = new FirebaseOptions.Builder()
-					.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-					.setDatabaseUrl("https://virtualtoolkitsc.firebaseio.com/").build();
+		VirtualFrame frame = FrameSelector.createFrame("A test window");
+		frame.setSize(300, 300);
 
-			defaultApp = FirebaseApp.initializeApp(options);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			System.out.println("Credentials File not found.");
-			System.exit(1);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("IO error.");
-			System.exit(1);
-		}
+		VirtualLayout vl = GridLayoutSelector.createLayout(2, 2);
+		frame.setLayout(vl);
 
-		FirebaseDatabase db = FirebaseDatabase.getInstance(defaultApp);
+		VirtualButton button = ButtonSelector.createButton("Button1");
 
-		UIFactory factory = UIFactory.getFactory(Architecture.SWING);
+		VirtualActionListener ac = new VirtualActionListener() {
 
-		AbstractWindow window = factory.createWindow();
-		AbstractFlowPanel panel = factory.createFlowPanel();
-		AbstractButton button = factory.createButton("button_1", db);
+			@Override
+			public void actionPerformed(VirtualActionEvent e) {
+				VirtualButton b = (VirtualButton) e.getSource();
+				System.out.println("Hello from button: " + b.getText());
+			}
+		};
 
-		button.addAbstractMouseListener(factory.createButtonHandler(button));
+		button.addActionListener(ac);
 
-		panel.addButton(button);
-		window.addPanel(panel);
+		frame.add(button);
 
-		window.setVisible(true);
 
+		VirtualButton button2 = ButtonSelector.createButton("Button2");
+		button2.addActionListener(ac);
+		frame.add(button2);
+
+		VirtualButton button3 = ButtonSelector.createButton("Button3");
+		button3.addActionListener(ac);
+		frame.add(button3);
+
+
+		frame.setVisible(true);
 	}
 
 }
