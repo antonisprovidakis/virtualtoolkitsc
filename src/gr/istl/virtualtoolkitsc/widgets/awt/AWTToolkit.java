@@ -1,23 +1,24 @@
-package gr.istl.virtualtoolkitsc.widgets.swing;
+package gr.istl.virtualtoolkitsc.widgets.awt;
 
 import gr.istl.virtualtoolkitsc.widgets.ButtonSelector;
 import gr.istl.virtualtoolkitsc.widgets.FrameSelector;
 import gr.istl.virtualtoolkitsc.widgets.GridLayoutSelector;
 import gr.istl.virtualtoolkitsc.widgets.PanelSelector;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
-import gr.istl.virtualtoolkitsc.widgets.awt.AWTGridLayoutFactory;
 
-public class SwingToolkit extends VirtualToolkit {
 
-	public SwingToolkit() {
+public class AWTToolkit extends VirtualToolkit {
+
+	public AWTToolkit() {
 		super();
 	}
 
 	@Override
 	public void setupSelectors() {
-		FrameSelector.setFrameFactory(new SwingFrameFactory());
-		PanelSelector.setPanelFactory(new SwingPanelFactory());
+		FrameSelector.setFrameFactory(new AWTFrameFactory());
+		PanelSelector.setPanelFactory(new AWTPanelFactory());
 		GridLayoutSelector.setGridLayoutFactory(new AWTGridLayoutFactory());
-		ButtonSelector.setButtonFactory(new SwingButtonFactory());
+		ButtonSelector.setButtonFactory(new AWTButtonFactory());
 	}
+
 }

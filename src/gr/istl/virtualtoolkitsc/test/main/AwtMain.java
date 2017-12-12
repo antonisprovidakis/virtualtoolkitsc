@@ -12,30 +12,12 @@ import gr.istl.virtualtoolkitsc.widgets.VirtualContainer;
 import gr.istl.virtualtoolkitsc.widgets.VirtualFrame;
 import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
-import gr.istl.virtualtoolkitsc.widgets.swing.SwingToolkit;
+import gr.istl.virtualtoolkitsc.widgets.awt.AWTToolkit;
 
-public class SwingMain {
-
+public class AwtMain {
 	public static void main(String[] args) {
-		/*
-		 * FirebaseApp defaultApp = null;
-		 * 
-		 * try { FileInputStream serviceAccount = new
-		 * FileInputStream("virtualtoolkitsc-firebase-credentials.json");
-		 * FirebaseOptions options = new FirebaseOptions.Builder()
-		 * .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-		 * .setDatabaseUrl("https://virtualtoolkitsc.firebaseio.com/").build();
-		 * 
-		 * defaultApp = FirebaseApp.initializeApp(options); } catch
-		 * (FileNotFoundException e) { e.printStackTrace();
-		 * System.out.println("Credentials File not found."); System.exit(1); } catch
-		 * (IOException e) { e.printStackTrace(); System.out.println("IO error.");
-		 * System.exit(1); }
-		 * 
-		 * FirebaseDatabase db = FirebaseDatabase.getInstance(defaultApp);
-		 */
 
-		VirtualToolkit.setDefaultToolkit(new SwingToolkit());
+		VirtualToolkit.setDefaultToolkit(new AWTToolkit());
 
 		VirtualFrame frame = FrameSelector.createFrame("A test window");
 		frame.setSize(300, 300);
@@ -71,14 +53,13 @@ public class SwingMain {
 			public void mouseEntered(VirtualMouseEvent e) {
 				System.out.println("in");
 			}
-			
+
 			@Override
 			public void mouseExited(VirtualMouseEvent e) {
 				System.out.println("out");
 			}
 		});
-		
-		
+
 		frame.add(button2);
 
 		VirtualButton button3 = ButtonSelector.createButton("Button3");
@@ -91,9 +72,7 @@ public class SwingMain {
 		vc.add(ButtonSelector.createButton("b2"));
 		
 		frame.add(vc);
-		
 
 		frame.setVisible(true);
 	}
-
 }

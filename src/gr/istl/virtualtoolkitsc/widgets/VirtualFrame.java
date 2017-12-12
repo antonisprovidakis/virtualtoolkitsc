@@ -8,7 +8,7 @@ public interface VirtualFrame extends /* VirtualComponent */ VirtualContainer {
 
 	public void setVisible(boolean visible);
 
-	// public VirtualContainer getTheContentPane();
+	// public VirtualContainer getContentPane();
 
 	// public void add(VirtualComponent c);
 
@@ -20,7 +20,7 @@ public interface VirtualFrame extends /* VirtualComponent */ VirtualContainer {
 
 	// public void add(VirtualContainer c);
 
-	// public void setTheContentPane(VirtualContainer container);
+	// public void setContentPane(VirtualContainer container);
 
 	// public void setLayout(VirtualLayout layout);
 

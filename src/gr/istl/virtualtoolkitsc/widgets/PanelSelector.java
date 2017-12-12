@@ -8,7 +8,7 @@ public class PanelSelector {
 		factory = panelFactory;
 	}
 
-	public static VirtualPanel createPanel() {
+	public static VirtualContainer createPanel() {
 		return factory.createPanel();
 	}
 }

@@ -1,5 +1,7 @@
 package gr.istl.virtualtoolkitsc.widgets.swing;
 
+import javax.swing.JFrame;
+
 import gr.istl.virtualtoolkitsc.widgets.FrameFactory;
 import gr.istl.virtualtoolkitsc.widgets.VirtualFrame;
 
@@ -7,12 +9,14 @@ public class SwingFrameFactory implements FrameFactory {
 
 	@Override
 	public VirtualFrame createFrame() {
-		return new SwingFrame();
+		JFrame frame = new JFrame();
+		return new SwingFrame(frame);
 	}
 
 	@Override
 	public VirtualFrame createFrame(String title) {
-		return new SwingFrame(title);
+		JFrame frame = new JFrame(title);
+		return new SwingFrame(frame);
 	}
 
 }

@@ -1,19 +1,18 @@
-package gr.istl.virtualtoolkitsc.widgets.swing;
+package gr.istl.virtualtoolkitsc.widgets.awt;
 
 import gr.istl.virtualtoolkitsc.widgets.GridLayoutFactory;
 import gr.istl.virtualtoolkitsc.widgets.VirtualGridLayout;
 
-public class SwingGridLayoutFactory implements GridLayoutFactory{
+public class AWTGridLayoutFactory extends AWTLayout implements GridLayoutFactory {
 
 	@Override
 	public VirtualGridLayout createLayout() {
-		return new SwingGridLayout();
+		return new AWTGridLayout();
 	}
 
 	@Override
 	public VirtualGridLayout createLayout(int rows, int cols) {
-		return new SwingGridLayout(rows, cols);
-
+		return new AWTGridLayout(rows, cols);
 	}
 
 }

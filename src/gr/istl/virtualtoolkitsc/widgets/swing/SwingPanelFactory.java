@@ -1,14 +1,16 @@
 package gr.istl.virtualtoolkitsc.widgets.swing;
 
+import javax.swing.JPanel;
+
 import gr.istl.virtualtoolkitsc.widgets.PanelFactory;
 import gr.istl.virtualtoolkitsc.widgets.VirtualContainer;
-import gr.istl.virtualtoolkitsc.widgets.VirtualPanel;
 
 public class SwingPanelFactory implements PanelFactory {
 
 	@Override
-	public VirtualPanel createPanel() {
-		return new SwingPanel();
+	public VirtualContainer createPanel() {
+		JPanel panel = new JPanel();
+		return new SwingPanel(panel);
 	}
 
 }

@@ -3,7 +3,7 @@ package gr.istl.virtualtoolkitsc.widgets;
 public abstract class VirtualToolkit {
 
 	static VirtualToolkit defaultToolkit;
-	
+
 	public VirtualToolkit() {
 		setupSelectors();
 	}
@@ -18,9 +18,4 @@ public abstract class VirtualToolkit {
 		return defaultToolkit;
 	}
 
-	// public abstract void startFrame(VirtualFrame frame);
-
-	// public static void start(VirtualFrame frame) {
-	// defaultToolkit.startFrame(frame);
-	// }
 }

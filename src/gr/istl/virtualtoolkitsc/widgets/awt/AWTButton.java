@@ -1,30 +1,32 @@
-package gr.istl.virtualtoolkitsc.widgets.swing;
+package gr.istl.virtualtoolkitsc.widgets.awt;
 
+import java.awt.Button;
+import java.util.HashSet;
 import java.util.Set;
-
-import javax.swing.AbstractButton;
-
-import com.google.gwt.dev.util.collect.HashSet;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
 
-public class SwingButton extends SwingComponent implements VirtualButton {
+public class AWTButton extends AWTComponent implements VirtualButton {
 
 	private Set<VirtualActionListener> vActionListeners = new HashSet<VirtualActionListener>();
 
-	public SwingButton(AbstractButton button) {
+	public AWTButton(Button button) {
 		super(button);
+	}
+
+	public AWTButton() {
+		this(new Button());
 	}
 
 	@Override
 	protected void init() {
 		super.init();
-		getButton().addActionListener(new SwingButtonEventForwarder(this));
+		getButton().addActionListener(new AWTButtonEventForwarder(this));
 	}
 
-	public AbstractButton getButton() {
-		return (AbstractButton) component;
+	public Button getButton() {
+		return (Button) component;
 	}
 
 	@Override
@@ -39,11 +41,12 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 
 	@Override
 	public void setText(String text) {
-		getButton().setText(text);
+		getButton().setLabel(text);
 	}
 
 	@Override
 	public String getText() {
-		return getButton().getText();
+		return getButton().getLabel();
 	}
+
 }
