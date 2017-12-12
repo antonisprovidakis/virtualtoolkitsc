@@ -1,5 +1,5 @@
 package gr.istl.virtualtoolkitsc.widgets;
 
-public interface VirtualPanel extends VirtualContainer{
+public interface VirtualPanel extends VirtualContainer {
 
 }

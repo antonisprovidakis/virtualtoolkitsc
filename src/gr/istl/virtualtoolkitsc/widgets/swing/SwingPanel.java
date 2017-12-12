@@ -22,10 +22,6 @@ public class SwingPanel extends JPanel implements VirtualPanel {
 		super.add((Component) c);
 	}
 
-//	@Override
-//	public void removeAll() {
-//		super.removeAll();
-//	}
 
 	@Override
 	public void setLayout(VirtualLayout layout) {
@@ -34,7 +30,8 @@ public class SwingPanel extends JPanel implements VirtualPanel {
 
 	@Override
 	public void addMouseListener(VirtualMouseListener listener) {
-		super.addMouseListener((MouseListener) listener);
+		// TODO: implement using a set (check VirtualActionListeners set)
 	}
+	
 
 }

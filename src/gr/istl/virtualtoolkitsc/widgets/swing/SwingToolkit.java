@@ -9,11 +9,11 @@ import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 public class SwingToolkit extends VirtualToolkit {
 
 	public SwingToolkit() {
-		select();
+		super();
 	}
 
 	@Override
-	public void select() {
+	public void setupSelectors() {
 		FrameSelector.setFrameFactory(new SwingFrameFactory());
 		PanelSelector.setPanelFactory(new SwingPanelFactory());
 		GridLayoutSelector.setGridLayoutFactory(new SwingGridLayoutFactory());
