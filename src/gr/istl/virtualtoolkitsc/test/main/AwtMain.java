@@ -18,7 +18,7 @@ public class AwtMain {
 
 		VirtualToolkit.setDefaultToolkit(new AWTToolkit());
 
-		VirtualFrame frame = FrameSelector.createFrame("Demo");
+		VirtualFrame frame = FrameSelector.createFrame("demo");
 
 		VirtualLayout vl = GridLayoutSelector.createLayout(2, 4);
 		frame.setLayout(vl);

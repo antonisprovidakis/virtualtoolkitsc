@@ -42,7 +42,7 @@ public class SwingMain {
 
 		VirtualToolkit.setDefaultToolkit(new SwingToolkit());
 
-		VirtualFrame frame = FrameSelector.createFrame("Demo");
+		VirtualFrame frame = FrameSelector.createFrame("demo");
 
 		VirtualLayout vl = GridLayoutSelector.createLayout(2, 4);
 		frame.setLayout(vl);

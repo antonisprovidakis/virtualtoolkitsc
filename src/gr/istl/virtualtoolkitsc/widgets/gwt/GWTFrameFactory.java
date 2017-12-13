@@ -11,8 +11,8 @@ public class GWTFrameFactory implements FrameFactory {
 	}
 
 	@Override
-	public VirtualFrame createFrame(String title) {
-		return new GWTFrame(title);
+	public VirtualFrame createFrame(String id) {
+		return new GWTFrame(id);
 	}
 
 }

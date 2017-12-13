@@ -13,34 +13,35 @@ import com.google.gwt.user.client.Window;
 
 public class GWTFrame extends GWTContainer implements VirtualFrame, VirtualContainer {
 
-	// private String id;
+	private String id;
 
 	public GWTFrame() {
 		super();
 	}
 
-	public GWTFrame(String title) {
+	public GWTFrame(String id) {
 		super();
-		setTitle(title);
+		this.id = id;
+		// setTitle(title);
 	}
 
 	public RootPanel getPanel() {
-		// if (id == null) {
-		// GWT.log("1");
-		// return RootPanel.get();
-		// } else {
-		// GWT.log("2");
-		// return RootPanel.get(id);
-		// }
+		if (id == null) {
+			return RootPanel.get();
+		} else {
+			RootPanel rootPanel = RootPanel.get(id);
 
-		return RootPanel.get();
+			if (rootPanel != null) {
+				return RootPanel.get(id);
+			} else {
+				// can't find container with specified id.
+				// fallback to RootPanel.get() (body element)
+				return RootPanel.get();
+			}
+		}
 	}
 
 	private void add(Widget w) {
-		// GWT.log("this.frame: " + this);
-		// GWT.log("getPanel(): " + getPanel());
-		// GWT.log("widget: " + w);
-
 		getPanel().add(w);
 	}
 
@@ -78,7 +79,7 @@ public class GWTFrame extends GWTContainer implements VirtualFrame, VirtualConta
 	@Override
 	public void setVisible(boolean visible) {
 	}
-	
+
 	@Override
 	public void pack() {
 	}
