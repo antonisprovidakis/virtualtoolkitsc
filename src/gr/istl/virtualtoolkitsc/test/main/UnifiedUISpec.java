@@ -12,11 +12,13 @@ import gr.istl.virtualtoolkitsc.widgets.VirtualGridLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 import gr.istl.virtualtoolkitsc.widgets.awt.AWTToolkit;
+import gr.istl.virtualtoolkitsc.widgets.swing.SwingToolkit;
 
-public class AwtMain {
-	public static void main(String[] args) {
-
-		VirtualToolkit.setDefaultToolkit(new AWTToolkit());
+public final class UnifiedUISpec {
+	private UnifiedUISpec() {}
+	
+	public static void engageDialogue(VirtualToolkit virtualToolkit) {
+		VirtualToolkit.setDefaultToolkit(virtualToolkit	);
 
 		VirtualFrame frame = FrameSelector.createFrame("demo");
 
@@ -47,4 +49,14 @@ public class AwtMain {
 
 		frame.setVisible(true);
 	}
+	
+	public static void main(String[] args) {
+		VirtualToolkit virtualToolkit = null;
+		
+//		virtualToolkit = new SwingToolkit();
+//		virtualToolkit = new AWTToolkit();
+				
+		UnifiedUISpec.engageDialogue(virtualToolkit);
+	}
+	
 }
