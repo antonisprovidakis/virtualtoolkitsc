@@ -1,17 +1,14 @@
 package gr.istl.virtualtoolkitsc.test.main;
 
-import com.google.gwt.core.client.GWT;
-
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseAdapter;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseEvent;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
 import gr.istl.virtualtoolkitsc.widgets.ButtonSelector;
 import gr.istl.virtualtoolkitsc.widgets.FrameSelector;
 import gr.istl.virtualtoolkitsc.widgets.GridLayoutSelector;
-import gr.istl.virtualtoolkitsc.widgets.PanelSelector;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
-import gr.istl.virtualtoolkitsc.widgets.VirtualContainer;
 import gr.istl.virtualtoolkitsc.widgets.VirtualFrame;
+import gr.istl.virtualtoolkitsc.widgets.VirtualGridLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 import gr.istl.virtualtoolkitsc.widgets.awt.AWTToolkit;
@@ -22,9 +19,8 @@ public class AwtMain {
 		VirtualToolkit.setDefaultToolkit(new AWTToolkit());
 
 		VirtualFrame frame = FrameSelector.createFrame("Demo");
-		frame.setSize(300, 300);
 
-		VirtualLayout vl = GridLayoutSelector.createLayout(2, 2);
+		VirtualLayout vl = GridLayoutSelector.createLayout(2, 4);
 		frame.setLayout(vl);
 
 		VirtualMouseListener ml = new VirtualMouseAdapter() {
@@ -41,11 +37,13 @@ public class AwtMain {
 			}
 		};
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < ((VirtualGridLayout) vl).getRows() * ((VirtualGridLayout) vl).getColumns(); i++) {
 			VirtualButton b = ButtonSelector.createButton("Button" + i);
 			b.addMouseListener(ml);
 			frame.add(b);
 		}
+
+		frame.pack();
 
 		frame.setVisible(true);
 	}

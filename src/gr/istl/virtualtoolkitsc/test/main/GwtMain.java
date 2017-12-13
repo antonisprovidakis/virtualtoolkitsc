@@ -11,6 +11,7 @@ import gr.istl.virtualtoolkitsc.widgets.FrameSelector;
 import gr.istl.virtualtoolkitsc.widgets.GridLayoutSelector;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
 import gr.istl.virtualtoolkitsc.widgets.VirtualFrame;
+import gr.istl.virtualtoolkitsc.widgets.VirtualGridLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 import gr.istl.virtualtoolkitsc.widgets.gwt.GWTToolkit;
@@ -23,9 +24,8 @@ public class GwtMain implements EntryPoint {
 		VirtualToolkit.setDefaultToolkit(new GWTToolkit());
 
 		VirtualFrame frame = FrameSelector.createFrame("Demo");
-		frame.setSize(300, 300);
 
-		VirtualLayout vl = GridLayoutSelector.createLayout(2, 2);
+		VirtualLayout vl = GridLayoutSelector.createLayout(2, 4);
 		frame.setLayout(vl);
 
 		VirtualMouseListener ml = new VirtualMouseAdapter() {
@@ -42,11 +42,13 @@ public class GwtMain implements EntryPoint {
 			}
 		};
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < ((VirtualGridLayout) vl).getRows() * ((VirtualGridLayout) vl).getColumns(); i++) {
 			VirtualButton b = ButtonSelector.createButton("Button" + i);
 			b.addMouseListener(ml);
 			frame.add(b);
 		}
+
+		frame.pack();
 
 		frame.setVisible(true);
 	}
