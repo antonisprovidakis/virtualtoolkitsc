@@ -1,16 +1,17 @@
 package gr.istl.virtualtoolkitsc.widgets.awt;
 
 import java.awt.Component;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
+import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseMoveListener;
 import gr.istl.virtualtoolkitsc.widgets.UniversalWidget;
 import gr.istl.virtualtoolkitsc.widgets.VirtualComponent;
 
 public abstract class AWTComponent extends UniversalWidget implements VirtualComponent {
 
-	private Set<VirtualMouseListener> vMouseListeners = new HashSet<VirtualMouseListener>();
+	private ArrayList<VirtualMouseListener> vMouseListeners = new ArrayList<VirtualMouseListener>();
+//	private ArrayList<VirtualMouseMoveListener> vMouseMoveListeners = new ArrayList<VirtualMouseMoveListener>();
 
 	public AWTComponent(Component component) {
 		super(component);
@@ -19,8 +20,7 @@ public abstract class AWTComponent extends UniversalWidget implements VirtualCom
 	@Override
 	protected void init() {
 		super.init();
-		AWTComponentEventForwarder forwarder = new AWTComponentEventForwarder(this);
-		getComponent().addMouseListener(forwarder);
+		getComponent().addMouseListener(new AWTComponentEventForwarder(this));
 	}
 
 	public Component getAWTComponent() {
@@ -47,17 +47,31 @@ public abstract class AWTComponent extends UniversalWidget implements VirtualCom
 	}
 
 	@Override
-	public void addMouseListener(VirtualMouseListener listener) {
-		vMouseListeners.add(listener);
-	}
-
-	@Override
 	public void setSize(int width, int height) {
 		getComponent().setSize(width, height);
 	}
 
-	public Set<VirtualMouseListener> getVirtualMouseListeners() {
+	@Override
+	public void addMouseListener(VirtualMouseListener listener) {
+		vMouseListeners.add(listener);
+	}
+
+//	@Override
+//	public void addMouseMoveListener(VirtualMouseMoveListener listener) {
+//		vMouseMoveListeners.add(listener);
+//	}
+//
+//	@Override
+//	public void addMouseTrackListener(VirtualMouseListener listener) {
+//		addMouseListener(listener);
+//	}
+
+	public ArrayList<VirtualMouseListener> getVirtualMouseListeners() {
 		return vMouseListeners;
 	}
+
+//	public ArrayList<VirtualMouseMoveListener> getVirtualMouseMoveListeners() {
+//		return vMouseMoveListeners;
+//	}
 
 }

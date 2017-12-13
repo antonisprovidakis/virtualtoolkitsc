@@ -1,22 +1,17 @@
 package gr.istl.virtualtoolkitsc.widgets.awt;
 
 import java.awt.Button;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
 
 public class AWTButton extends AWTComponent implements VirtualButton {
 
-	private Set<VirtualActionListener> vActionListeners = new HashSet<VirtualActionListener>();
+	private ArrayList<VirtualActionListener> vActionListeners = new ArrayList<VirtualActionListener>();
 
 	public AWTButton(Button button) {
 		super(button);
-	}
-
-	public AWTButton() {
-		this(new Button());
 	}
 
 	@Override
@@ -35,7 +30,7 @@ public class AWTButton extends AWTComponent implements VirtualButton {
 	}
 
 	@Override
-	public Set<VirtualActionListener> getVirtualActionListeners() {
+	public ArrayList<VirtualActionListener> getVirtualActionListeners() {
 		return vActionListeners;
 	}
 
@@ -47,6 +42,14 @@ public class AWTButton extends AWTComponent implements VirtualButton {
 	@Override
 	public String getText() {
 		return getButton().getLabel();
+	}
+
+	@Override
+	public void addStyleName(String name) {
+	}
+
+	@Override
+	public void removeStyleName(String name) {
 	}
 
 }

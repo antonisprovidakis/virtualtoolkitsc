@@ -1,8 +1,9 @@
 package gr.istl.virtualtoolkitsc.widgets;
 
-import java.util.Set;
+import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
+import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseMoveListener;
 
 public interface VirtualComponent {
 
@@ -12,11 +13,17 @@ public interface VirtualComponent {
 
 	public int getWidth();
 
+	public void setSize(int width, int height);
+
 	public void addMouseListener(VirtualMouseListener listener);
 
-	public Set<VirtualMouseListener> getVirtualMouseListeners();
+	public ArrayList<VirtualMouseListener> getVirtualMouseListeners();
 
-	public void setSize(int width, int height);
+	// public ArrayList<VirtualMouseMoveListener> getVirtualMouseMoveListeners();
+
+	// public void addMouseTrackListener(VirtualMouseListener listener);
+
+	// public void addMouseMoveListener(VirtualMouseMoveListener listener);
 
 	// public VirtualContainer getParent();
 	// public void revalidate();

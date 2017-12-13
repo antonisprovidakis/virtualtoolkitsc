@@ -2,7 +2,7 @@ package gr.istl.virtualtoolkitsc.widgets.swing;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
+import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionEvent;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
@@ -19,9 +19,9 @@ public class SwingButtonEventForwarder implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		VirtualActionEvent virtualEvent = SwingEventPackager.convert(event);
 
-		Iterator<VirtualActionListener> listeners = button.getVirtualActionListeners().iterator();
-		while (listeners.hasNext()) {
-			VirtualActionListener listener = listeners.next();
+		ArrayList<VirtualActionListener> listeners = button.getVirtualActionListeners();
+
+		for (VirtualActionListener listener : listeners) {
 			listener.actionPerformed(virtualEvent);
 		}
 	}

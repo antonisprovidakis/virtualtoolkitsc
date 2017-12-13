@@ -21,9 +21,10 @@
 	<entry-point class='gr.istl.virtualtoolkitsc.test.main.GwtMain' />
 
 	<!-- Specify the paths for translatable code -->
-	<source path='test/gwt/main' />
-	<source path='api/widgets/gwt' />
-<!-- 	<source path='api/widgets' /> -->
+	<source path='test/main' />
+	<source path='widgets' />
+	<source path='widgets/gwt' />
+	<source path='api/listeners' />
 
 
 	<!-- allow Super Dev Mode -->

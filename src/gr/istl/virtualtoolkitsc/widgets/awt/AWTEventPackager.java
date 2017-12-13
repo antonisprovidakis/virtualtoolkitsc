@@ -16,7 +16,6 @@ public class AWTEventPackager {
 		virtualActionEvent.setModifies(event.getModifiers());
 		virtualActionEvent.setWhen(event.getWhen());
 		virtualActionEvent.setType(event.getID());
-		// virtualActionEvent.setSource(event.getSource());
 		virtualActionEvent.setSource(UniversalWidget.universalWidget(event.getSource()));
 
 		return virtualActionEvent;

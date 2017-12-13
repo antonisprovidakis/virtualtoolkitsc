@@ -1,17 +1,22 @@
 package gr.istl.virtualtoolkitsc.api.listeners;
 
 public class VirtualMouseEvent {
-	public static final int MouseDown = 3;// SWT.MouseDown; //Value is 3
-	public static final int MouseUp = 4;// SWT.MouseUp; //Value is 4
+	public static final int MouseDown = 3;
+	public static final int MouseUp = 4;
+	public static final int MouseDoubleClick = 8;
 	public static final int MouseClick = 101;
-	public static final int MouseEnter = 6;// SWT.MouseEnter; //Value is 6
-	public static final int MouseExit = 7;// SWT.MouseExit; //Value is 7
+	public static final int MouseEnter = 6;
+	public static final int MouseExit = 7;
+	public static final int MouseHover = 102;
+	public static final int Mouse_Move = 5;
+	public static final int Mouse_Drag = 102;
 
 	private int type;
 	private long when = -1;
 	private int modifiers;
 	private int x = -1;
 	private int y = -1;
+	private int clickCount = 0;
 	private int button;
 	private boolean popUpTrigger = false;
 	private Object loc;
@@ -60,6 +65,14 @@ public class VirtualMouseEvent {
 
 	public void setButton(int b) {
 		button = b;
+	}
+
+	public int getClickCount() {
+		return this.clickCount;
+	}
+
+	public void setClickCount(int c) {
+		clickCount = c;
 	}
 
 	public Object getLocationOnScreen() {

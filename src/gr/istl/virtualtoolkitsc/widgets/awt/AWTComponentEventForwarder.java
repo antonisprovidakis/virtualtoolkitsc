@@ -2,7 +2,7 @@ package gr.istl.virtualtoolkitsc.widgets.awt;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Iterator;
+import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseEvent;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
@@ -19,10 +19,9 @@ public class AWTComponentEventForwarder implements MouseListener {
 	public void mouseClicked(MouseEvent event) {
 		VirtualMouseEvent virtualEvent = AWTEventPackager.convert(event, VirtualMouseEvent.MouseClick);
 
-		Iterator<VirtualMouseListener> listeners = component.getVirtualMouseListeners().iterator();
+		ArrayList<VirtualMouseListener> listeners = component.getVirtualMouseListeners();
 
-		while (listeners.hasNext()) {
-			VirtualMouseListener listener = listeners.next();
+		for (VirtualMouseListener listener : listeners) {
 			listener.mouseClicked(virtualEvent);
 		}
 	}
@@ -31,10 +30,9 @@ public class AWTComponentEventForwarder implements MouseListener {
 	public void mouseEntered(MouseEvent event) {
 		VirtualMouseEvent virtualEvent = AWTEventPackager.convert(event, VirtualMouseEvent.MouseEnter);
 
-		Iterator<VirtualMouseListener> listeners = component.getVirtualMouseListeners().iterator();
+		ArrayList<VirtualMouseListener> listeners = component.getVirtualMouseListeners();
 
-		while (listeners.hasNext()) {
-			VirtualMouseListener listener = listeners.next();
+		for (VirtualMouseListener listener : listeners) {
 			listener.mouseEntered(virtualEvent);
 		}
 	}
@@ -43,10 +41,9 @@ public class AWTComponentEventForwarder implements MouseListener {
 	public void mouseExited(MouseEvent event) {
 		VirtualMouseEvent virtualEvent = AWTEventPackager.convert(event, VirtualMouseEvent.MouseExit);
 
-		Iterator<VirtualMouseListener> listeners = component.getVirtualMouseListeners().iterator();
+		ArrayList<VirtualMouseListener> listeners = component.getVirtualMouseListeners();
 
-		while (listeners.hasNext()) {
-			VirtualMouseListener listener = listeners.next();
+		for (VirtualMouseListener listener : listeners) {
 			listener.mouseExited(virtualEvent);
 		}
 	}
@@ -55,10 +52,9 @@ public class AWTComponentEventForwarder implements MouseListener {
 	public void mousePressed(MouseEvent event) {
 		VirtualMouseEvent virtualEvent = AWTEventPackager.convert(event, VirtualMouseEvent.MouseDown);
 
-		Iterator<VirtualMouseListener> listeners = component.getVirtualMouseListeners().iterator();
+		ArrayList<VirtualMouseListener> listeners = component.getVirtualMouseListeners();
 
-		while (listeners.hasNext()) {
-			VirtualMouseListener listener = listeners.next();
+		for (VirtualMouseListener listener : listeners) {
 			listener.mousePressed(virtualEvent);
 		}
 	}
@@ -67,10 +63,9 @@ public class AWTComponentEventForwarder implements MouseListener {
 	public void mouseReleased(MouseEvent event) {
 		VirtualMouseEvent virtualEvent = AWTEventPackager.convert(event, VirtualMouseEvent.MouseUp);
 
-		Iterator<VirtualMouseListener> listeners = component.getVirtualMouseListeners().iterator();
+		ArrayList<VirtualMouseListener> listeners = component.getVirtualMouseListeners();
 
-		while (listeners.hasNext()) {
-			VirtualMouseListener listener = listeners.next();
+		for (VirtualMouseListener listener : listeners) {
 			listener.mouseReleased(virtualEvent);
 		}
 	}
