@@ -10,8 +10,11 @@ import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
 
 public class GWTButton extends GWTComponent implements VirtualButton {
 
+	private boolean pressed = false;
+
 	private ArrayList<VirtualActionListener> vActionListeners = new ArrayList<VirtualActionListener>();
-//	private ArrayList<VirtualMouseMoveListener> vMouseMoveListeners = new ArrayList<VirtualMouseMoveListener>();
+	// private ArrayList<VirtualMouseMoveListener> vMouseMoveListeners = new
+	// ArrayList<VirtualMouseMoveListener>();
 
 	public GWTButton(Button button) {
 		super(button);
@@ -32,19 +35,19 @@ public class GWTButton extends GWTComponent implements VirtualButton {
 		vActionListeners.add(listener);
 	}
 
-//	@Override
-//	public void addMouseMoveListener(VirtualMouseMoveListener listener) {
-//		vMouseMoveListeners.add(listener);
-//	}
+	// @Override
+	// public void addMouseMoveListener(VirtualMouseMoveListener listener) {
+	// vMouseMoveListeners.add(listener);
+	// }
 
 	@Override
 	public ArrayList<VirtualActionListener> getVirtualActionListeners() {
 		return vActionListeners;
 	}
 
-//	public ArrayList<VirtualMouseMoveListener> getVirtualMouseMoveListeners() {
-//		return vMouseMoveListeners;
-//	}
+	// public ArrayList<VirtualMouseMoveListener> getVirtualMouseMoveListeners() {
+	// return vMouseMoveListeners;
+	// }
 
 	@Override
 	public void setText(String text) {
@@ -54,6 +57,23 @@ public class GWTButton extends GWTComponent implements VirtualButton {
 	@Override
 	public String getText() {
 		return getButton().getText();
+	}
+
+	@Override
+	public boolean isPressed() {
+		return pressed;
+	}
+
+	@Override
+	public void setPressed(boolean pressed) {
+
+		if (pressed) {
+			addStyleName("gwt-Button-pressed");
+		} else {
+			removeStyleName("gwt-Button-pressed");
+		}
+
+		this.pressed = pressed;
 	}
 
 	@Override

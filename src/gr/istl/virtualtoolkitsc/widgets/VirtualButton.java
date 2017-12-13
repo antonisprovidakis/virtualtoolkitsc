@@ -14,6 +14,10 @@ public interface VirtualButton extends VirtualComponent {
 
 	public String getText();
 	
+	public void setPressed(boolean pressed);
+	
+	public boolean isPressed();
+	
 	public void addStyleName(String name);
 
 	public void removeStyleName(String name);

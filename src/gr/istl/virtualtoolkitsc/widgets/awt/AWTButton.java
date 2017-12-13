@@ -45,6 +45,18 @@ public class AWTButton extends AWTComponent implements VirtualButton {
 	}
 
 	@Override
+	public boolean isPressed() {
+		
+		// TODO: implement
+		return false;
+	}
+	
+	@Override
+	public void setPressed(boolean pressed) {
+		// TODO: implement
+	}
+	
+	@Override
 	public void addStyleName(String name) {
 	}
 
