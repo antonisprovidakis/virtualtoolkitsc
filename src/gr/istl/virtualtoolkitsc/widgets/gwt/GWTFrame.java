@@ -78,5 +78,9 @@ public class GWTFrame extends GWTContainer implements VirtualFrame, VirtualConta
 	@Override
 	public void setVisible(boolean visible) {
 	}
+	
+	@Override
+	public void pack() {
+	}
 
 }

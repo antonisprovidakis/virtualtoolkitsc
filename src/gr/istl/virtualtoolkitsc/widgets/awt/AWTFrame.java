@@ -42,5 +42,10 @@ public class AWTFrame extends AWTContainer implements VirtualFrame {
 	public void setVisible(boolean visible) {
 		getFrame().setVisible(visible);
 	}
+	
+	@Override
+	public void pack() {
+		getFrame().pack();
+	}
 
 }

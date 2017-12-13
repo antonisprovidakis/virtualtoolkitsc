@@ -7,6 +7,8 @@ public interface VirtualFrame extends /* VirtualComponent */ VirtualContainer {
 	public String getTitle();
 
 	public void setVisible(boolean visible);
+	
+	public void pack();
 
 	// public VirtualContainer getContentPane();
 
