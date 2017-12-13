@@ -4,8 +4,12 @@ import java.util.ArrayList;
 
 import javax.swing.AbstractButton;
 
+import com.google.firebase.database.DatabaseReference;
+
+import gr.istl.virtualtoolkitsc.api.firebase.FirebaseSyncManager;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
+import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class SwingButton extends SwingComponent implements VirtualButton {
 
@@ -44,15 +48,25 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 	public String getText() {
 		return getButton().getText();
 	}
-	
+
 	@Override
 	public boolean isPressed() {
 		return getButton().getModel().isPressed();
 	}
-	
+
 	@Override
 	public void setPressed(boolean pressed) {
 		getButton().getModel().setPressed(pressed);
+
+//		if (VirtualToolkit.isInSync()) {
+//			FirebaseSyncManager firebaseSyncManager = FirebaseSyncManager.getInstance();
+//			DatabaseReference dbRef = firebaseSyncManager.getDBRefForWidgetId(getUniversalWidgetId());
+//			
+//			System.out.println("in setPressed inSync: " + firebaseSyncManager);
+//
+//			dbRef.setValueAsync(pressed);
+//		}
+
 	}
 
 	@Override

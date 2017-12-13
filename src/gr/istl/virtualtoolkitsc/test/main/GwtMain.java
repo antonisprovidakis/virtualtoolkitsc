@@ -21,7 +21,7 @@ public class GwtMain implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 
-		VirtualToolkit.setDefaultToolkit(new GWTToolkit());
+		VirtualToolkit.setDefaultToolkit(new GWTToolkit(false));
 
 		VirtualFrame frame = FrameSelector.createFrame("demo");
 

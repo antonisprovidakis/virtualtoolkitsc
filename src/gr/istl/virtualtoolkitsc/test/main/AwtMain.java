@@ -16,7 +16,7 @@ import gr.istl.virtualtoolkitsc.widgets.awt.AWTToolkit;
 public class AwtMain {
 	public static void main(String[] args) {
 
-		VirtualToolkit.setDefaultToolkit(new AWTToolkit());
+		VirtualToolkit.setDefaultToolkit(new AWTToolkit(false));
 
 		VirtualFrame frame = FrameSelector.createFrame("demo");
 

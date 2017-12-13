@@ -2,9 +2,11 @@ package gr.istl.virtualtoolkitsc.widgets;
 
 public abstract class VirtualToolkit {
 
-	static VirtualToolkit defaultToolkit;
+	private static VirtualToolkit defaultToolkit;
+	private static boolean inSync = false;
 
-	public VirtualToolkit() {
+	public VirtualToolkit(boolean synced) {
+		inSync = synced;
 		setupSelectors();
 	}
 
@@ -16,6 +18,14 @@ public abstract class VirtualToolkit {
 
 	public static VirtualToolkit getDefaultToolkit() {
 		return defaultToolkit;
+	}
+
+	public static boolean isInSync() {
+		return inSync;
+	}
+
+	public static void setInSync(boolean sync) {
+		inSync = sync;
 	}
 
 }

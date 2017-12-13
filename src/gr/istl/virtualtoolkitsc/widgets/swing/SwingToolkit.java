@@ -9,8 +9,8 @@ import gr.istl.virtualtoolkitsc.widgets.awt.AWTGridLayoutFactory;
 
 public class SwingToolkit extends VirtualToolkit {
 
-	public SwingToolkit() {
-		super();
+	public SwingToolkit(boolean synced) {
+		super(synced);
 	}
 
 	@Override
