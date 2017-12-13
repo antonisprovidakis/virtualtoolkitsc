@@ -16,7 +16,7 @@ h1 {
     background: #a7a0a0;
 }
 
-.gwt-Button-active {
+.gwt-Button-pressed {
     border: 1px inset #ccc;
     background: #a7a0a0 !important;;
 }
