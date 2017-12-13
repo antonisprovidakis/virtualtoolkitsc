@@ -44,6 +44,16 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 	public String getText() {
 		return getButton().getText();
 	}
+	
+	@Override
+	public boolean isPressed() {
+		return getButton().getModel().isPressed();
+	}
+	
+	@Override
+	public void setPressed(boolean pressed) {
+		getButton().getModel().setPressed(pressed);
+	}
 
 	@Override
 	public void addStyleName(String name) {
