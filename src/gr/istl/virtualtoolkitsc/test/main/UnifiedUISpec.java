@@ -54,8 +54,8 @@ public final class UnifiedUISpec {
 	public static void main(String[] args) {
 		VirtualToolkit virtualToolkit = null;
 		
-		virtualToolkit = new SwingToolkit(true);
-//		virtualToolkit = new AWTToolkit(true);
+		virtualToolkit = new SwingToolkit(false);
+//		virtualToolkit = new AWTToolkit(false);
 				
 		UnifiedUISpec.engageDialogue(virtualToolkit);
 	}

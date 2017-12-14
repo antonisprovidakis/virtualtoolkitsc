@@ -7,7 +7,7 @@ import gr.istl.virtualtoolkitsc.api.firebase.FirebaseSyncManager;
 public abstract class UniversalWidget {
 	protected Object component;
 
-	private static int idCounter = 0;
+//	private static int idCounter = 0;
 	private String universalWidgetId;
 
 	// native widget to Universal widget mapping
@@ -15,10 +15,8 @@ public abstract class UniversalWidget {
 
 	public UniversalWidget(Object component) {
 		this.component = component;
-
-		universalWidgetId = createNewWidgetId();
-		
 		componentsToUniversalWidgets.put(component, this);
+		universalWidgetId = createNewWidgetId();
 		init();
 	}
 
@@ -46,7 +44,7 @@ public abstract class UniversalWidget {
 	}
 
 	private String createNewWidgetId() {
-		return "widget" + idCounter++;
+		return "widget" + componentsToUniversalWidgets.size();
 	}
 
 }
