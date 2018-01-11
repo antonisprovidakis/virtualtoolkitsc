@@ -13,13 +13,8 @@ import gr.istl.virtualtoolkitsc.widgets.UniversalWidget;
 public class GWTEventPackager {
 	public static VirtualActionEvent convert(ClickEvent event) {
 		VirtualActionEvent virtualActionEvent = new VirtualActionEvent();
-		
 		virtualActionEvent.setSource(UniversalWidget.universalWidget(event.getSource()));
-
 		return virtualActionEvent;
-		
-		
-//		return new VirtualActionEvent();
 	}
 
 	public static VirtualActionEvent convert(ValueChangeEvent<String> event) {
@@ -29,28 +24,28 @@ public class GWTEventPackager {
 	public static VirtualMouseEvent convert(MouseMoveEvent event, int type) {
 		return new VirtualMouseEvent(type);
 	}
-	
+
 	public static VirtualMouseEvent convert(MouseUpEvent event, int type) {
 		VirtualMouseEvent virtualMouseEvent = new VirtualMouseEvent(type);
-		
+
 		virtualMouseEvent.setX(event.getX());
 		virtualMouseEvent.setY(event.getY());
 		virtualMouseEvent.setXOnScreen(event.getScreenX());
 		virtualMouseEvent.setYOnScreen(event.getScreenY());
 		virtualMouseEvent.setSource(UniversalWidget.universalWidget(event.getSource()));
-		
+
 		return virtualMouseEvent;
 	}
-	
+
 	public static VirtualMouseEvent convert(MouseDownEvent event, int type) {
 		VirtualMouseEvent virtualMouseEvent = new VirtualMouseEvent(type);
-		
+
 		virtualMouseEvent.setX(event.getX());
 		virtualMouseEvent.setY(event.getY());
 		virtualMouseEvent.setXOnScreen(event.getScreenX());
 		virtualMouseEvent.setYOnScreen(event.getScreenY());
 		virtualMouseEvent.setSource(UniversalWidget.universalWidget(event.getSource()));
-		
+
 		return virtualMouseEvent;
 	}
 }

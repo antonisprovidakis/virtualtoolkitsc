@@ -10,7 +10,7 @@ import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
 
 import com.google.gwt.user.client.Window;
 
-public class GWTFrame extends GWTContainer implements VirtualFrame, VirtualContainer {
+public class GWTFrame extends GWTContainer implements VirtualFrame {
 
 	private String id;
 

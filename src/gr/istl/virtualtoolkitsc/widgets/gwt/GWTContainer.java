@@ -44,6 +44,7 @@ public abstract class GWTContainer extends GWTComponent implements VirtualContai
 
 	}
 
+	@Override
 	public int getWidth() {
 		return getContainer().getOffsetWidth();
 	}
