@@ -51,12 +51,12 @@ public abstract class GWTComponent extends UniversalWidget implements VirtualCom
 
 	@Override
 	public int getHeight() {
-		return 0;
+		return getWidget().getOffsetHeight();
 	}
 
 	@Override
 	public int getWidth() {
-		return 0;
+		return getWidget().getOffsetWidth();
 	}
 
 	@Override
