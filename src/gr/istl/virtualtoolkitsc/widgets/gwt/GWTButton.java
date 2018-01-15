@@ -85,5 +85,16 @@ public class GWTButton extends GWTComponent implements VirtualButton {
 	public void removeStyleName(String name) {
 		getButton().removeStyleName(name);
 	}
+	
+	@Override
+	public boolean isCollaborativeText() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	@Override
+	public void setIsCollaborativeText(boolean collabText) {
+		// TODO Auto-generated method stub
+	}
 
 }

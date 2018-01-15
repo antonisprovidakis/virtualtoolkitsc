@@ -22,4 +22,8 @@ public interface VirtualButton extends VirtualComponent {
 
 	public void removeStyleName(String name);
 	
+	public boolean isCollaborativeText();
+	
+	public void setIsCollaborativeText(boolean collabText);
+	
 }
