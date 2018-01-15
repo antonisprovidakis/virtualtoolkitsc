@@ -9,8 +9,8 @@ import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class AWTToolkit extends VirtualToolkit {
 
-	public AWTToolkit(boolean synced) {
-		super(synced);
+	public AWTToolkit(boolean collab) {
+		super(collab);
 	}
 
 	@Override

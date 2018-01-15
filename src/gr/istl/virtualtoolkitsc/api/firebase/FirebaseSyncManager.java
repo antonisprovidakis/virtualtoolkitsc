@@ -54,7 +54,7 @@ public class FirebaseSyncManager {
 		return instance;
 	}
 
-	public void addWidgetIdToWidgetIdToDatabaseReferenceMap(String widgetId) {
+	public void addWidgetIdIntoWidgetIdToDatabaseReferenceMap(String widgetId) {
 		DatabaseReference dbRef = createDBRefForWidgetId(widgetId);
 		widgetIdToDatabaseReference.put(widgetId, dbRef);
 	}

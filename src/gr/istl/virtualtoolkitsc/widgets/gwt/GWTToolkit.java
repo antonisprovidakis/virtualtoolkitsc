@@ -8,8 +8,8 @@ import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class GWTToolkit extends VirtualToolkit {
 
-	public GWTToolkit(boolean synced) {
-		super(synced);
+	public GWTToolkit(boolean collab) {
+		super(collab);
 	}
 
 	@Override

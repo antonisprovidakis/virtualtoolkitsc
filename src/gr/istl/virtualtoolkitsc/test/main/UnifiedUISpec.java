@@ -11,19 +11,19 @@ import gr.istl.virtualtoolkitsc.widgets.VirtualFrame;
 import gr.istl.virtualtoolkitsc.widgets.VirtualGridLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
-import gr.istl.virtualtoolkitsc.widgets.awt.AWTToolkit;
 import gr.istl.virtualtoolkitsc.widgets.swing.SwingToolkit;
 
-
 public final class UnifiedUISpec {
-	private UnifiedUISpec() {}
-	
+
+	private UnifiedUISpec() {
+	}
+
 	public static void engageDialogue(VirtualToolkit virtualToolkit) {
-		VirtualToolkit.setDefaultToolkit(virtualToolkit	);
+		VirtualToolkit.setDefaultToolkit(virtualToolkit);
 
 		VirtualFrame frame = FrameSelector.createFrame("demo");
 
-		VirtualLayout vl = GridLayoutSelector.createLayout(2, 4);
+		VirtualLayout vl = GridLayoutSelector.createLayout(2, 2);
 		frame.setLayout(vl);
 
 		VirtualMouseListener ml = new VirtualMouseAdapter() {
@@ -41,7 +41,7 @@ public final class UnifiedUISpec {
 		};
 
 		for (int i = 0; i < ((VirtualGridLayout) vl).getRows() * ((VirtualGridLayout) vl).getColumns(); i++) {
-			VirtualButton b = ButtonSelector.createButton("Button" + i);
+			VirtualButton b = ButtonSelector.createButton("Button" + (i + 1));
 			b.addMouseListener(ml);
 			frame.add(b);
 		}
@@ -50,14 +50,14 @@ public final class UnifiedUISpec {
 
 		frame.setVisible(true);
 	}
-	
+
 	public static void main(String[] args) {
 		VirtualToolkit virtualToolkit = null;
-		
-		virtualToolkit = new SwingToolkit(false);
-//		virtualToolkit = new AWTToolkit(false);
-				
+
+		virtualToolkit = new SwingToolkit(true);
+		// virtualToolkit = new AWTToolkit(false);
+
 		UnifiedUISpec.engageDialogue(virtualToolkit);
 	}
-	
+
 }
