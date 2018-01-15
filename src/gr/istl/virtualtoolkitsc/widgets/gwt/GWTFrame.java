@@ -15,11 +15,11 @@ public class GWTFrame extends GWTContainer implements VirtualFrame {
 	private String id;
 
 	public GWTFrame() {
-		super();
+		super(null);
 	}
 
 	public GWTFrame(String id) {
-		super();
+		super(null);
 		this.id = id;
 		// setTitle(title);
 	}

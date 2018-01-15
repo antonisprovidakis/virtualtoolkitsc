@@ -16,9 +16,9 @@ public abstract class GWTContainer extends GWTComponent implements VirtualContai
 		super(widget);
 	}
 
-	public GWTContainer() {
-		super();
-	}
+//	public GWTContainer() {
+//		super();
+//	}
 
 	public Panel getContainer() {
 		return (Panel) component;

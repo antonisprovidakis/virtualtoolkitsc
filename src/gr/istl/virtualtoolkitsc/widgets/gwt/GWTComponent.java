@@ -20,9 +20,9 @@ public abstract class GWTComponent extends UniversalWidget implements VirtualCom
 		super(widget);
 	}
 
-	public GWTComponent() {
-		super();
-	}
+//	public GWTComponent() {
+//		super();
+//	}
 
 	@Override
 	protected void init() {
