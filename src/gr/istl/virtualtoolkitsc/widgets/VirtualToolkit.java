@@ -72,12 +72,22 @@ public abstract class VirtualToolkit {
 		return "widget" + idToWidget.size();
 	}
 
-	public static void updateFirebase(String WidgetId, String propertyName, Object oldValue, Object newValue) {
-		defaultToolkit.execUpdateFirebase(WidgetId, propertyName, oldValue, newValue);
+	public static void updateFirebaseProperty(String widgetId, String propertyName, Object oldValue, Object newValue) {
+		defaultToolkit.execUpdateFirebaseProperty(widgetId, propertyName, oldValue, newValue);
 	}
 
-	public void execUpdateFirebase(String widgetId, String propertyName, Object oldValue, Object newValue) {
+	public void execUpdateFirebaseProperty(String widgetId, String propertyName, Object oldValue, Object newValue) {
 		FirebaseSyncManager.getInstance().updateProperty(widgetId, propertyName, oldValue, newValue);
+	}
+
+	public static void notifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue,
+			Object newValue) {
+		defaultToolkit.execNotifyPropertyChangeListeners(widgetId, propertyName, oldValue, newValue);
+	}
+
+	public void execNotifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue,
+			Object newValue) {
+		FirebaseSyncManager.getInstance().notifyPropertyChangeListeners(widgetId, propertyName, oldValue, newValue);
 	}
 
 	public static void startMonitoringChanges(String widgetId, String propertyName) {
@@ -96,14 +106,12 @@ public abstract class VirtualToolkit {
 		FirebaseSyncManager.getInstance().stopMonitoringProperty(widgetId, propertyName);
 	}
 
-	public static void notifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue,
-			Object newValue) {
-		defaultToolkit.execNotifyPropertyChangeListeners(widgetId, propertyName, oldValue, newValue);
+	public static boolean isPropertyMonitored(String widgetId, String propertyName) {
+		return defaultToolkit.execIsPropertyMonitored(widgetId, propertyName);
 	}
 
-	public void execNotifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue,
-			Object newValue) {
-		FirebaseSyncManager.getInstance().notifyPropertyChangeListeners(widgetId, propertyName, oldValue, newValue);
+	public boolean execIsPropertyMonitored(String widgetId, String propertyName) {
+		return FirebaseSyncManager.getInstance().isPropertyMonitored(widgetId, propertyName);
 	}
 
 }

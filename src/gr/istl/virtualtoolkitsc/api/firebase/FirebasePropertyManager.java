@@ -30,9 +30,11 @@ public class FirebasePropertyManager {
 	public void notifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue, Object newValue) {
 		PropertyChangeSupport pcs = firebasePropertyChangeSupportMap.get(widgetId);
 
-		if (pcs != null) {
-			pcs.firePropertyChange(propertyName, oldValue, newValue);
+		if (pcs == null) {
+			return;
 		}
+
+		pcs.firePropertyChange(propertyName, oldValue, newValue);
 	}
 
 	public void startMonitoringProperty(String widgetId, String propertyName) {
@@ -66,8 +68,7 @@ public class FirebasePropertyManager {
 			@Override
 			public void onDataChange(DataSnapshot snapshot) {
 				if (snapshot.getValue() != null) {
-					CollaborativeWidget cw = (CollaborativeWidget) VirtualToolkit
-							.getDefaultObjectByID(widgetId);
+					CollaborativeWidget cw = (CollaborativeWidget) VirtualToolkit.getDefaultObjectByID(widgetId);
 					cw.updateLocalUI(propertyName, snapshot.getValue());
 				}
 			}
@@ -127,6 +128,16 @@ public class FirebasePropertyManager {
 		}
 
 		dbRef.child(propertyName).removeEventListener(listener);
+	}
+
+	public boolean isPropertyMonitored(String widgetId, String propertyName) {
+		PropertyChangeSupport pcs = firebasePropertyChangeSupportMap.get(widgetId);
+
+		if (pcs == null) {
+			return false;
+		}
+
+		return firebasePropertyChangeSupportMap.get(widgetId).hasListeners(propertyName);
 	}
 
 }

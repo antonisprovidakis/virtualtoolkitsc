@@ -71,7 +71,13 @@ public class FirebaseSyncManager {
 	}
 
 	public void updateProperty(String widgetId, String propertyName, Object oldValue, Object newValue) {
-		fpcm.updateProperty(getDBRefForWidgetId(widgetId).child(propertyName), oldValue, newValue);
+		DatabaseReference dbRef = getDBRefForWidgetId(widgetId);
+		
+		if(dbRef == null) {
+			return;
+		}
+		
+		fpcm.updateProperty(dbRef.child(propertyName), oldValue, newValue);
 	}
 
 	public void notifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue, Object newValue) {
@@ -84,6 +90,10 @@ public class FirebaseSyncManager {
 
 	public void stopMonitoringProperty(String widgetId, String propertyName) {
 		fpcm.stopMonitoringProperty(widgetId, propertyName);
+	}
+	
+	public boolean isPropertyMonitored(String widgetId, String propertyName) {
+		return fpcm.isPropertyMonitored(widgetId, propertyName);
 	}
 
 }

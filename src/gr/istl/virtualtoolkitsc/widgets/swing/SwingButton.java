@@ -11,6 +11,8 @@ import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class SwingButton extends SwingComponent implements VirtualButton {
 
+	public final static String TEXT_PROPERTY = "text";
+
 	private ArrayList<VirtualActionListener> vActionListeners = new ArrayList<VirtualActionListener>();
 
 	public SwingButton(AbstractButton button) {
@@ -41,7 +43,7 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 	public void setText(String text) {
 		String oldValue = getText();
 		getButton().setText(text);
-		VirtualToolkit.notifyPropertyChangeListeners(getUniversalWidgetId(), "text", oldValue, text);
+		VirtualToolkit.notifyPropertyChangeListeners(getUniversalWidgetId(), TEXT_PROPERTY, oldValue, text);
 	}
 
 	@Override
@@ -68,20 +70,23 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 	}
 
 	@Override
-	public void setIsCollaborativeText(boolean collab) {
-		final String propertyName = "text";
+	public boolean getIsCollaborativeText() {
+		return VirtualToolkit.isPropertyMonitored(getUniversalWidgetId(), TEXT_PROPERTY);
+	}
 
+	@Override
+	public void setIsCollaborativeText(boolean collab) {
 		if (collab && VirtualToolkit.isCollaborative()) {
-			VirtualToolkit.startMonitoringChanges(getUniversalWidgetId(), propertyName);
+			VirtualToolkit.startMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
 		} else {
-			VirtualToolkit.stopMonitoringChanges(getUniversalWidgetId(), propertyName);
+			VirtualToolkit.stopMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
 		}
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
 		if (VirtualToolkit.isCollaborative()) {
-			VirtualToolkit.updateFirebase(getUniversalWidgetId(), e.getPropertyName(), e.getOldValue(),
+			VirtualToolkit.updateFirebaseProperty(getUniversalWidgetId(), e.getPropertyName(), e.getOldValue(),
 					e.getNewValue());
 		}
 	}
@@ -89,7 +94,7 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 	@Override
 	public void updateLocalUI(String propertyName, Object newValue) {
 		switch (propertyName) {
-		case "text":
+		case TEXT_PROPERTY:
 			setText((String) newValue);
 			break;
 		default:
