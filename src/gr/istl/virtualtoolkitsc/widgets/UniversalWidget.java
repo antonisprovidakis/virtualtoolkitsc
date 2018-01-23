@@ -11,19 +11,21 @@ public abstract class UniversalWidget {
 	private String universalWidgetId;
 
 	// native widget to Universal widget mapping
-	private static transient HashMap<Object, UniversalWidget> componentsToUniversalWidgets = new HashMap<Object, UniversalWidget>();
+	public static transient HashMap<Object, UniversalWidget> componentsToUniversalWidgets = new HashMap<Object, UniversalWidget>();
 
 	public UniversalWidget(Object component) {
 		this.component = component;
 		addComponentIntoComponentsToUniversalWidgetsMap(component, this);
-		universalWidgetId = createNewWidgetId();
+//		universalWidgetId = createNewWidgetId();
+		universalWidgetId = VirtualToolkit.createNewWidgetId();
+		VirtualToolkit.defaultAssociate(universalWidgetId, this);
 		init();
 	}
 
 	protected void init() {
 		if (VirtualToolkit.isCollaborative()) {
-			FirebaseSyncManager firebaseSyncManager = FirebaseSyncManager.getInstance();
-			firebaseSyncManager.addWidgetIdIntoWidgetIdToDatabaseReferenceMap(universalWidgetId);
+			FirebaseSyncManager fsm = FirebaseSyncManager.getInstance();
+			fsm.addWidgetIdIntoWidgetIdToDatabaseReferenceMap(universalWidgetId);
 		}
 	}
 
@@ -46,9 +48,14 @@ public abstract class UniversalWidget {
 	public String getUniversalWidgetId() {
 		return universalWidgetId;
 	}
-
-	private String createNewWidgetId() {
-		return "widget" + componentsToUniversalWidgets.size();
+	
+	// TODO: fix all other places this method modifies
+	public void setUniversalWidgetId(String id) {
+		universalWidgetId = id;
 	}
+
+//	private String createNewWidgetId() {
+//		return "widget" + componentsToUniversalWidgets.size();
+//	}
 
 }

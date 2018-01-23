@@ -4,9 +4,9 @@ import java.awt.Component;
 import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseMoveListener;
 import gr.istl.virtualtoolkitsc.widgets.UniversalWidget;
 import gr.istl.virtualtoolkitsc.widgets.VirtualComponent;
+import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public abstract class AWTComponent extends UniversalWidget implements VirtualComponent {
 
@@ -49,6 +49,14 @@ public abstract class AWTComponent extends UniversalWidget implements VirtualCom
 	@Override
 	public void setSize(int width, int height) {
 		getComponent().setSize(width, height);
+	}
+	
+	@Override
+	public void setName(String name) {
+		String oldId = getUniversalWidgetId();
+		getComponent().setName(name);
+		setUniversalWidgetId(name);
+		VirtualToolkit.defaultReassociate(oldId, name, this);
 	}
 
 	@Override

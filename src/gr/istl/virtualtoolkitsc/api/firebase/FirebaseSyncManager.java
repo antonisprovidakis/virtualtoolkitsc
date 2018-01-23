@@ -23,7 +23,10 @@ public class FirebaseSyncManager {
 
 	private static FirebaseSyncManager instance = null;
 
+	private FirebasePropertyManager fpcm;
+
 	private FirebaseSyncManager() {
+		fpcm = new FirebasePropertyManager();
 		init();
 	}
 
@@ -59,16 +62,28 @@ public class FirebaseSyncManager {
 		widgetIdToDatabaseReference.put(widgetId, dbRef);
 	}
 
-	// public FirebaseDatabase getDB() {
-	// return database;
-	// }
-
 	public DatabaseReference getDBRefForWidgetId(String widgetId) {
 		return widgetIdToDatabaseReference.get(widgetId);
 	}
 
 	private DatabaseReference createDBRefForWidgetId(String widgetId) {
 		return database.getReference("/" + SESSION_ID + "/" + widgetId);
+	}
+
+	public void updateProperty(String widgetId, String propertyName, Object oldValue, Object newValue) {
+		fpcm.updateProperty(getDBRefForWidgetId(widgetId).child(propertyName), oldValue, newValue);
+	}
+
+	public void notifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue, Object newValue) {
+		fpcm.notifyPropertyChangeListeners(widgetId, propertyName, oldValue, newValue);
+	}
+
+	public void startMonitoringProperty(String widgetId, String propertyName) {
+		fpcm.startMonitoringProperty(widgetId, propertyName);
+	}
+
+	public void stopMonitoringProperty(String widgetId, String propertyName) {
+		fpcm.stopMonitoringProperty(widgetId, propertyName);
 	}
 
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 
-public interface VirtualButton extends VirtualComponent {
+public interface VirtualButton extends VirtualComponent, CollaborativeWidget {
 
 	public void addActionListener(VirtualActionListener listener);
 
@@ -21,9 +21,7 @@ public interface VirtualButton extends VirtualComponent {
 	public void addStyleName(String name);
 
 	public void removeStyleName(String name);
-	
-	public boolean isCollaborativeText();
-	
-	public void setIsCollaborativeText(boolean collabText);
+		
+	public void setIsCollaborativeText(boolean collab);
 	
 }

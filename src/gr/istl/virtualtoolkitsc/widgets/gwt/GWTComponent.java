@@ -6,9 +6,9 @@ import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.Widget;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseMoveListener;
 import gr.istl.virtualtoolkitsc.widgets.UniversalWidget;
 import gr.istl.virtualtoolkitsc.widgets.VirtualComponent;
+import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public abstract class GWTComponent extends UniversalWidget implements VirtualComponent {
 
@@ -20,9 +20,9 @@ public abstract class GWTComponent extends UniversalWidget implements VirtualCom
 		super(widget);
 	}
 
-//	public GWTComponent() {
-//		super();
-//	}
+	// public GWTComponent() {
+	// super();
+	// }
 
 	@Override
 	protected void init() {
@@ -62,6 +62,14 @@ public abstract class GWTComponent extends UniversalWidget implements VirtualCom
 	@Override
 	public void setSize(int width, int height) {
 		getWidget().setPixelSize(width, height);
+	}
+
+	@Override
+	public void setName(String name) {
+		String oldId = getUniversalWidgetId();
+		getWidget().getElement().setId(name); // maybe remove?
+		setUniversalWidgetId(name);
+		VirtualToolkit.defaultReassociate(oldId, name, this);
 	}
 
 	@Override

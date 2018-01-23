@@ -2,15 +2,11 @@ package gr.istl.virtualtoolkitsc.test.main;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionEvent;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseAdapter;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseEvent;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
 import gr.istl.virtualtoolkitsc.widgets.ButtonSelector;
 import gr.istl.virtualtoolkitsc.widgets.FrameSelector;
 import gr.istl.virtualtoolkitsc.widgets.GridLayoutSelector;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
 import gr.istl.virtualtoolkitsc.widgets.VirtualFrame;
-import gr.istl.virtualtoolkitsc.widgets.VirtualGridLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 import gr.istl.virtualtoolkitsc.widgets.awt.AWTToolkit;
@@ -66,6 +62,10 @@ public final class UnifiedUISpec2 {
 //		 virtualToolkit = new AWTToolkit(true);
 
 		UnifiedUISpec2.engageDialogue(virtualToolkit);
+
+		// System.out.println(virtualToolkit.idToWidget);
+		// System.out.println("----");
+		// System.out.println(UniversalWidget.componentsToUniversalWidgets);
 	}
 
 }
