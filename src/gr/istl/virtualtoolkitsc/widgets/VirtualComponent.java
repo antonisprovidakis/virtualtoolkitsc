@@ -15,6 +15,8 @@ public interface VirtualComponent {
 
 	public void setSize(int width, int height);
 	
+	public String getName();
+	
 	public void setName(String name);
 
 	public void addMouseListener(VirtualMouseListener listener);

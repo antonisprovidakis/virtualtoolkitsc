@@ -63,6 +63,11 @@ public abstract class GWTComponent extends UniversalWidget implements VirtualCom
 	public void setSize(int width, int height) {
 		getWidget().setPixelSize(width, height);
 	}
+	
+	@Override
+	public String getName() {
+		return getUniversalWidgetId();
+	}
 
 	@Override
 	public void setName(String name) {
