@@ -33,5 +33,15 @@
 			<artifactId>firebase-admin</artifactId>
 			<version>5.5.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.code.gwtx</groupId>
+			<artifactId>gwtx</artifactId>
+			<version>1.5.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.spirylics.xgwt</groupId>
+			<artifactId>x-gwt-firebase</artifactId>
+			<version>2.0-alpha9</version>
+		</dependency>
 	</dependencies>
 </project>

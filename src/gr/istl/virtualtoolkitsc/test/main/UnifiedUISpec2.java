@@ -62,10 +62,6 @@ public final class UnifiedUISpec2 {
 //		 virtualToolkit = new AWTToolkit(true);
 
 		UnifiedUISpec2.engageDialogue(virtualToolkit);
-
-		// System.out.println(virtualToolkit.idToWidget);
-		// System.out.println("----");
-		// System.out.println(UniversalWidget.componentsToUniversalWidgets);
 	}
 
 }

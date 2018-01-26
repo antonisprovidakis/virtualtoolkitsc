@@ -23,10 +23,10 @@ public class FirebaseSyncManager {
 
 	private static FirebaseSyncManager instance = null;
 
-	private FirebasePropertyManager fpcm;
+	private FirebasePropertiesManager fpcm;
 
 	private FirebaseSyncManager() {
-		fpcm = new FirebasePropertyManager();
+		fpcm = new FirebasePropertiesManager();
 		init();
 	}
 
@@ -62,6 +62,8 @@ public class FirebaseSyncManager {
 		widgetIdToDatabaseReference.put(widgetId, dbRef);
 	}
 
+	// TODO: make this return an Object type and cast to
+	// appropriate type at places it's used?
 	public DatabaseReference getDBRefForWidgetId(String widgetId) {
 		return widgetIdToDatabaseReference.get(widgetId);
 	}
@@ -71,13 +73,7 @@ public class FirebaseSyncManager {
 	}
 
 	public void updateProperty(String widgetId, String propertyName, Object oldValue, Object newValue) {
-		DatabaseReference dbRef = getDBRefForWidgetId(widgetId);
-		
-		if(dbRef == null) {
-			return;
-		}
-		
-		fpcm.updateProperty(dbRef.child(propertyName), oldValue, newValue);
+		fpcm.updateProperty(widgetId, propertyName, oldValue, newValue);
 	}
 
 	public void notifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue, Object newValue) {
@@ -91,7 +87,7 @@ public class FirebaseSyncManager {
 	public void stopMonitoringProperty(String widgetId, String propertyName) {
 		fpcm.stopMonitoringProperty(widgetId, propertyName);
 	}
-	
+
 	public boolean isPropertyMonitored(String widgetId, String propertyName) {
 		return fpcm.isPropertyMonitored(widgetId, propertyName);
 	}

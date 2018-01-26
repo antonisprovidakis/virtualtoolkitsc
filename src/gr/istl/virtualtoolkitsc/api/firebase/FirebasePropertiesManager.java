@@ -12,18 +12,24 @@ import com.google.firebase.database.ValueEventListener;
 import gr.istl.virtualtoolkitsc.widgets.CollaborativeWidget;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
-public class FirebasePropertyManager {
+public class FirebasePropertiesManager {
 	private Map<String, PropertyChangeSupport> firebasePropertyChangeSupportMap;
 	private Map<String, ValueEventListener> valueEventListenerMap;
 
-	public FirebasePropertyManager() {
+	public FirebasePropertiesManager() {
 		firebasePropertyChangeSupportMap = new HashMap<String, PropertyChangeSupport>();
 		valueEventListenerMap = new HashMap<String, ValueEventListener>();
 	}
 
-	public void updateProperty(DatabaseReference dbRef, Object oldValue, Object newValue) {
+	public void updateProperty(String widgetId, String propertyName, Object oldValue, Object newValue) {
+		DatabaseReference dbRef = FirebaseSyncManager.getInstance().getDBRefForWidgetId(widgetId);
+
+		if (dbRef == null) {
+			return;
+		}
+
 		if (!oldValue.equals(newValue)) {
-			dbRef.setValueAsync(newValue);
+			dbRef.child(propertyName).setValueAsync(newValue);
 		}
 	}
 
@@ -121,13 +127,16 @@ public class FirebasePropertyManager {
 	public void destroyValueEventListener(String widgetId, String propertyName) {
 		DatabaseReference dbRef = FirebaseSyncManager.getInstance().getDBRefForWidgetId(widgetId);
 
-		ValueEventListener listener = valueEventListenerMap.get(widgetId + "_" + propertyName);
+		String listenerId = widgetId + "_" + propertyName;
+		
+		ValueEventListener listener = valueEventListenerMap.get(listenerId);
 
 		if (listener == null) {
 			return;
 		}
 
 		dbRef.child(propertyName).removeEventListener(listener);
+		valueEventListenerMap.remove(listenerId);
 	}
 
 	public boolean isPropertyMonitored(String widgetId, String propertyName) {

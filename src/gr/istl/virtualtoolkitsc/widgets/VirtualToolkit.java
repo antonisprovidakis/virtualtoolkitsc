@@ -10,7 +10,7 @@ public abstract class VirtualToolkit {
 	private static VirtualToolkit defaultToolkit;
 	private static boolean collaborative = false;
 
-	public Map<String, Object> idToWidget = new TreeMap<String, Object>();
+	private Map<String, Object> idToWidget = new TreeMap<String, Object>();
 
 	public VirtualToolkit(boolean collab) {
 		collaborative = collab;

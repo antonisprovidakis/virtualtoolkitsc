@@ -3,14 +3,10 @@ package gr.istl.virtualtoolkitsc.widgets.gwt;
 import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
-import com.google.firebase.database.DatabaseReference;
 import com.google.gwt.user.client.ui.Button;
 
-import gr.istl.virtualtoolkitsc.api.firebase.FirebaseSyncManager;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseMoveListener;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
-import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class GWTButton extends GWTComponent implements VirtualButton {
 
@@ -108,14 +104,6 @@ public class GWTButton extends GWTComponent implements VirtualButton {
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
 		// TODO: -- HERE: UPDATE FIREBASE
-		// TODO: Maybe move below code into a Firebase specific class
-		if (VirtualToolkit.isCollaborative()) {
-			if (e.getOldValue() != e.getNewValue()) {
-				FirebaseSyncManager firebaseSyncManager = FirebaseSyncManager.getInstance();
-				DatabaseReference dbRef = firebaseSyncManager.getDBRefForWidgetId(getUniversalWidgetId());
-				dbRef.child(e.getPropertyName()).setValueAsync(e.getNewValue());
-			}
-		}
 	}
 
 	@Override

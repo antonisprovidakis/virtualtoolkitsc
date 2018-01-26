@@ -11,7 +11,7 @@ public abstract class UniversalWidget {
 	private String universalWidgetId;
 
 	// native widget to Universal widget mapping
-	public static transient HashMap<Object, UniversalWidget> componentsToUniversalWidgets = new HashMap<Object, UniversalWidget>();
+	private static transient HashMap<Object, UniversalWidget> componentsToUniversalWidgets = new HashMap<Object, UniversalWidget>();
 
 	public UniversalWidget(Object component) {
 		this.component = component;

@@ -16,6 +16,8 @@
 	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/> -->
 
 	<!-- Other module inherits -->
+	<inherits name='com.googlecode.gwtx.Java'/>
+	<inherits name="com.github.spirylics.xgwt.Firebase"/>
 
 	<!-- Specify the app entry point class. -->
 	<entry-point class='gr.istl.virtualtoolkitsc.test.main.GWTExec' />
@@ -25,7 +27,8 @@
 	<source path='widgets' />
 	<source path='widgets/gwt' />
 	<source path='api/listeners' />
-
+<!-- 	<source path='api/firebase' /> -->
+<!-- 	<source path='api/firebase/gwt' /> -->
 
 
 	<!-- allow Super Dev Mode -->
