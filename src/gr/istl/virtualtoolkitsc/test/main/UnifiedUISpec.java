@@ -1,14 +1,12 @@
 package gr.istl.virtualtoolkitsc.test.main;
 
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseAdapter;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseEvent;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
+import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionEvent;
+import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 import gr.istl.virtualtoolkitsc.widgets.ButtonSelector;
 import gr.istl.virtualtoolkitsc.widgets.FrameSelector;
 import gr.istl.virtualtoolkitsc.widgets.GridLayoutSelector;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
 import gr.istl.virtualtoolkitsc.widgets.VirtualFrame;
-import gr.istl.virtualtoolkitsc.widgets.VirtualGridLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 import gr.istl.virtualtoolkitsc.widgets.swing.SwingToolkit;
@@ -23,28 +21,33 @@ public final class UnifiedUISpec {
 
 		VirtualFrame frame = FrameSelector.createFrame("demo");
 
-		VirtualLayout vl = GridLayoutSelector.createLayout(2, 2);
+		VirtualLayout vl = GridLayoutSelector.createLayout(1, 2);
 		frame.setLayout(vl);
 
-		VirtualMouseListener ml = new VirtualMouseAdapter() {
-			@Override
-			public void mouseReleased(VirtualMouseEvent e) {
-				VirtualButton b = (VirtualButton) e.getSource();
-				System.out.println("released on button: " + b.getText());
-			}
+		final VirtualButton vb1 = ButtonSelector.createButton("VB1");
+		vb1.setIsCollaborativeText(true);
+
+		final VirtualButton vb2 = ButtonSelector.createButton("VB2");
+		vb2.setIsCollaborativeText(true);
+
+		vb1.addActionListener(new VirtualActionListener() {
 
 			@Override
-			public void mousePressed(VirtualMouseEvent e) {
-				VirtualButton b = (VirtualButton) e.getSource();
-				System.out.println("pressed on button: " + b.getText());
+			public void actionPerformed(VirtualActionEvent e) {
+				vb2.setText("Changed by 1");
 			}
-		};
+		});
 
-		for (int i = 0; i < ((VirtualGridLayout) vl).getRows() * ((VirtualGridLayout) vl).getColumns(); i++) {
-			VirtualButton b = ButtonSelector.createButton("Button" + (i + 1));
-			b.addMouseListener(ml);
-			frame.add(b);
-		}
+		vb2.addActionListener(new VirtualActionListener() {
+
+			@Override
+			public void actionPerformed(VirtualActionEvent e) {
+				vb1.setText("Changed by 2");
+			}
+		});
+
+		frame.add(vb1);
+		frame.add(vb2);
 
 		frame.pack();
 
@@ -54,8 +57,8 @@ public final class UnifiedUISpec {
 	public static void main(String[] args) {
 		VirtualToolkit virtualToolkit = null;
 
-		virtualToolkit = new SwingToolkit(false);
-		// virtualToolkit = new AWTToolkit(false);
+		virtualToolkit = new SwingToolkit(true);
+		// virtualToolkit = new AWTToolkit(true);
 
 		UnifiedUISpec.engageDialogue(virtualToolkit);
 	}

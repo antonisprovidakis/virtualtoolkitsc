@@ -1,5 +1,7 @@
 package gr.istl.virtualtoolkitsc.widgets.swing;
 
+import gr.istl.virtualtoolkitsc.api.firebase.FirebaseSyncManager;
+import gr.istl.virtualtoolkitsc.api.firebase.nongwt.NonGWTFirebaseSyncManager;
 import gr.istl.virtualtoolkitsc.widgets.ButtonSelector;
 import gr.istl.virtualtoolkitsc.widgets.FrameSelector;
 import gr.istl.virtualtoolkitsc.widgets.GridLayoutSelector;
@@ -11,6 +13,11 @@ public class SwingToolkit extends VirtualToolkit {
 
 	public SwingToolkit(boolean collab) {
 		super(collab);
+	}
+	
+	@Override
+	public FirebaseSyncManager createFirebaseSyncManager() {
+		return new NonGWTFirebaseSyncManager();
 	}
 
 	@Override

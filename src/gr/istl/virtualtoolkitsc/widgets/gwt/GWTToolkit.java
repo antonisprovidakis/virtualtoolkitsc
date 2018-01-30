@@ -1,5 +1,7 @@
 package gr.istl.virtualtoolkitsc.widgets.gwt;
 
+import gr.istl.virtualtoolkitsc.api.firebase.FirebaseSyncManager;
+import gr.istl.virtualtoolkitsc.api.firebase.gwt.GWTFirebaseSyncManager;
 import gr.istl.virtualtoolkitsc.widgets.ButtonSelector;
 import gr.istl.virtualtoolkitsc.widgets.FrameSelector;
 import gr.istl.virtualtoolkitsc.widgets.GridLayoutSelector;
@@ -10,6 +12,11 @@ public class GWTToolkit extends VirtualToolkit {
 
 	public GWTToolkit(boolean collab) {
 		super(collab);
+	}
+	
+	@Override
+	public FirebaseSyncManager createFirebaseSyncManager() {
+		return new GWTFirebaseSyncManager();
 	}
 
 	@Override

@@ -6,9 +6,13 @@ import java.util.ArrayList;
 import com.google.gwt.user.client.ui.Button;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
+import gr.istl.virtualtoolkitsc.exceptions.VirtualToolkitCollaborativeException;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
+import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class GWTButton extends GWTComponent implements VirtualButton {
+
+	public final static String TEXT_PROPERTY = "text";
 
 	private boolean pressed = false;
 
@@ -51,7 +55,9 @@ public class GWTButton extends GWTComponent implements VirtualButton {
 
 	@Override
 	public void setText(String text) {
+		String oldValue = getText();
 		getButton().setText(text);
+		VirtualToolkit.notifyPropertyChangeListeners(getUniversalWidgetId(), TEXT_PROPERTY, oldValue, text);
 	}
 
 	@Override
@@ -88,28 +94,28 @@ public class GWTButton extends GWTComponent implements VirtualButton {
 
 	@Override
 	public boolean getIsCollaborativeText() {
-		// TODO Auto-generated method stub
-
-		// final String propertyName = "text";
-		// return VirtualToolkit.isPropertyMonitored(getUniversalWidgetId(),
-		// propertyName);
-		return false;
+		return VirtualToolkit.isPropertyMonitored(getUniversalWidgetId(), TEXT_PROPERTY);
 	}
 
 	@Override
-	public void setIsCollaborativeText(boolean collabText) {
-		// TODO Auto-generated method stub
+	public void setIsCollaborativeText(boolean collab) {
+		if (collab) {
+			VirtualToolkit.startMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
+		} else {
+			VirtualToolkit.stopMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
+		}
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
-		// TODO: -- HERE: UPDATE FIREBASE
+		VirtualToolkit.updateFirebaseProperty(getUniversalWidgetId(), e.getPropertyName(), e.getOldValue(),
+				e.getNewValue());
 	}
 
 	@Override
 	public void updateLocalUI(String propertyName, Object newValue) {
 		switch (propertyName) {
-		case "text":
+		case TEXT_PROPERTY:
 			setText((String) newValue);
 			break;
 		default:

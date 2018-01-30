@@ -76,7 +76,7 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 
 	@Override
 	public void setIsCollaborativeText(boolean collab) {
-		if (collab && VirtualToolkit.isCollaborative()) {
+		if (collab) {
 			VirtualToolkit.startMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
 		} else {
 			VirtualToolkit.stopMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
@@ -85,10 +85,9 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
-		if (VirtualToolkit.isCollaborative()) {
-			VirtualToolkit.updateFirebaseProperty(getUniversalWidgetId(), e.getPropertyName(), e.getOldValue(),
-					e.getNewValue());
-		}
+		VirtualToolkit.updateFirebaseProperty(getUniversalWidgetId(), e.getPropertyName(), e.getOldValue(),
+				e.getNewValue());
+
 	}
 
 	@Override

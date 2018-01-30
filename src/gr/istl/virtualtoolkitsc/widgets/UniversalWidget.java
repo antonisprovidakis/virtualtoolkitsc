@@ -24,7 +24,7 @@ public abstract class UniversalWidget {
 
 	protected void init() {
 		if (VirtualToolkit.isCollaborative()) {
-			FirebaseSyncManager fsm = FirebaseSyncManager.getInstance();
+			FirebaseSyncManager fsm = VirtualToolkit.getDefaultFirebaseSyncManager();
 			fsm.addWidgetIdIntoWidgetIdToDatabaseReferenceMap(universalWidgetId);
 		}
 	}

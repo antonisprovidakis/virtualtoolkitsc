@@ -8,7 +8,7 @@ public class GWTExec implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-		UnifiedUISpec.engageDialogue(new GWTToolkit(false));
+		UnifiedUISpec.engageDialogue(new GWTToolkit(true));
 	}
 
 }
