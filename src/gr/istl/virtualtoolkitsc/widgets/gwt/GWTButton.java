@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import com.google.gwt.user.client.ui.Button;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
-import gr.istl.virtualtoolkitsc.exceptions.VirtualToolkitCollaborativeException;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 

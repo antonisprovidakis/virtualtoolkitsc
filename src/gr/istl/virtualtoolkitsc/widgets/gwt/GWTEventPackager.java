@@ -1,12 +1,15 @@
 package gr.istl.virtualtoolkitsc.widgets.gwt;
 
+import com.google.gwt.event.dom.client.BlurEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.FocusEvent;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseUpEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionEvent;
+import gr.istl.virtualtoolkitsc.api.listeners.VirtualFocusEvent;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseEvent;
 import gr.istl.virtualtoolkitsc.widgets.UniversalWidget;
 
@@ -47,5 +50,23 @@ public class GWTEventPackager {
 		virtualMouseEvent.setSource(UniversalWidget.universalWidget(event.getSource()));
 
 		return virtualMouseEvent;
+	}
+
+	public static VirtualFocusEvent convert(FocusEvent event, int type) {
+		VirtualFocusEvent virtualFocusEvent = new VirtualFocusEvent(type);
+
+		virtualFocusEvent.setSource(event.getSource());
+		virtualFocusEvent.setWhen(System.currentTimeMillis());
+
+		return virtualFocusEvent;
+	}
+
+	public static VirtualFocusEvent convert(BlurEvent event, int type) {
+		VirtualFocusEvent virtualFocusEvent = new VirtualFocusEvent(type);
+
+		virtualFocusEvent.setSource(event.getSource());
+		virtualFocusEvent.setWhen(System.currentTimeMillis());
+
+		return virtualFocusEvent;
 	}
 }

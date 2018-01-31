@@ -1,7 +1,5 @@
 package gr.istl.virtualtoolkitsc.test.main;
 
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionEvent;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 import gr.istl.virtualtoolkitsc.widgets.ButtonSelector;
 import gr.istl.virtualtoolkitsc.widgets.FrameSelector;
 import gr.istl.virtualtoolkitsc.widgets.GridLayoutSelector;
@@ -28,23 +26,8 @@ public final class UnifiedUISpec {
 		vb1.setIsCollaborativeText(true);
 
 		final VirtualButton vb2 = ButtonSelector.createButton("VB2");
+
 		vb2.setIsCollaborativeText(true);
-
-		vb1.addActionListener(new VirtualActionListener() {
-
-			@Override
-			public void actionPerformed(VirtualActionEvent e) {
-				vb2.setText("Changed by 1");
-			}
-		});
-
-		vb2.addActionListener(new VirtualActionListener() {
-
-			@Override
-			public void actionPerformed(VirtualActionEvent e) {
-				vb1.setText("Changed by 2");
-			}
-		});
 
 		frame.add(vb1);
 		frame.add(vb2);
