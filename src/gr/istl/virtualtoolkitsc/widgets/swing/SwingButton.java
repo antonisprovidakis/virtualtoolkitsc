@@ -1,6 +1,5 @@
 package gr.istl.virtualtoolkitsc.widgets.swing;
 
-import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
 import javax.swing.AbstractButton;
@@ -84,14 +83,7 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent e) {
-		VirtualToolkit.updateFirebaseProperty(getUniversalWidgetId(), e.getPropertyName(), e.getOldValue(),
-				e.getNewValue());
-
-	}
-
-	@Override
-	public void updateLocalUI(String propertyName, Object newValue) {
+	public void collaborativePropertyChanged(String propertyName, Object newValue) {
 		switch (propertyName) {
 		case TEXT_PROPERTY:
 			setText((String) newValue);

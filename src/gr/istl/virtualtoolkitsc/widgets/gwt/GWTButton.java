@@ -1,6 +1,5 @@
 package gr.istl.virtualtoolkitsc.widgets.gwt;
 
-import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
 import com.google.gwt.user.client.ui.Button;
@@ -106,13 +105,7 @@ public class GWTButton extends GWTComponent implements VirtualButton {
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent e) {
-		VirtualToolkit.updateFirebaseProperty(getUniversalWidgetId(), e.getPropertyName(), e.getOldValue(),
-				e.getNewValue());
-	}
-
-	@Override
-	public void updateLocalUI(String propertyName, Object newValue) {
+	public void collaborativePropertyChanged(String propertyName, Object newValue) {
 		switch (propertyName) {
 		case TEXT_PROPERTY:
 			setText((String) newValue);

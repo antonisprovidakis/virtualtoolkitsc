@@ -2,6 +2,7 @@ package gr.istl.virtualtoolkitsc.widgets;
 
 import java.util.ArrayList;
 
+import gr.istl.virtualtoolkitsc.api.firebase.CollaborativeWidget;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 
 public interface VirtualButton extends VirtualComponent, CollaborativeWidget {

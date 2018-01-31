@@ -4,7 +4,6 @@ import java.beans.PropertyChangeSupport;
 import java.util.HashMap;
 import java.util.Map;
 
-import gr.istl.virtualtoolkitsc.widgets.CollaborativeWidget;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public abstract class FirebasePropertiesManager {
@@ -37,8 +36,7 @@ public abstract class FirebasePropertiesManager {
 		PropertyChangeSupport pcs = firebasePropertyChangeSupportMap.get(widgetId);
 
 		if (!pcs.hasListeners(propertyName)) {
-			pcs.addPropertyChangeListener(propertyName,
-					(CollaborativeWidget) VirtualToolkit.getDefaultObjectByID(widgetId));
+			pcs.addPropertyChangeListener(propertyName, new CollaborativePropertyChangeHandler(widgetId));
 		}
 	}
 
@@ -66,8 +64,7 @@ public abstract class FirebasePropertiesManager {
 		}
 
 		if (pcs.hasListeners(propertyName)) {
-			pcs.removePropertyChangeListener(propertyName,
-					(CollaborativeWidget) VirtualToolkit.getDefaultObjectByID(widgetId));
+			pcs.removePropertyChangeListener(propertyName, pcs.getPropertyChangeListeners(propertyName)[0]);
 		}
 
 		destroyPropertyChangeSupport(widgetId);

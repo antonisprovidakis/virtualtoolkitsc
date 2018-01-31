@@ -1,5 +1,7 @@
 package gr.istl.virtualtoolkitsc.test.main;
 
+import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionEvent;
+import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 import gr.istl.virtualtoolkitsc.widgets.ButtonSelector;
 import gr.istl.virtualtoolkitsc.widgets.FrameSelector;
 import gr.istl.virtualtoolkitsc.widgets.GridLayoutSelector;
@@ -7,6 +9,7 @@ import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
 import gr.istl.virtualtoolkitsc.widgets.VirtualFrame;
 import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
+import gr.istl.virtualtoolkitsc.widgets.awt.AWTToolkit;
 import gr.istl.virtualtoolkitsc.widgets.swing.SwingToolkit;
 
 public final class UnifiedUISpec {
@@ -26,8 +29,23 @@ public final class UnifiedUISpec {
 		vb1.setIsCollaborativeText(true);
 
 		final VirtualButton vb2 = ButtonSelector.createButton("VB2");
-
 		vb2.setIsCollaborativeText(true);
+
+		vb1.addActionListener(new VirtualActionListener() {
+
+			@Override
+			public void actionPerformed(VirtualActionEvent e) {
+				vb2.setText("Changed by 1");
+			}
+		});
+		
+		vb2.addActionListener(new VirtualActionListener() {
+
+			@Override
+			public void actionPerformed(VirtualActionEvent e) {
+				vb1.setText("Changed by 2");
+			}
+		});
 
 		frame.add(vb1);
 		frame.add(vb2);
@@ -41,7 +59,7 @@ public final class UnifiedUISpec {
 		VirtualToolkit virtualToolkit = null;
 
 		virtualToolkit = new SwingToolkit(true);
-		// virtualToolkit = new AWTToolkit(true);
+//		 virtualToolkit = new AWTToolkit(true);
 
 		UnifiedUISpec.engageDialogue(virtualToolkit);
 	}

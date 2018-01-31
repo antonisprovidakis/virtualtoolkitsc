@@ -1,7 +1,6 @@
 package gr.istl.virtualtoolkitsc.widgets.awt;
 
 import java.awt.Button;
-import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
@@ -84,14 +83,7 @@ public class AWTButton extends AWTComponent implements VirtualButton {
 	}
 
 	@Override
-	public void propertyChange(PropertyChangeEvent e) {
-		VirtualToolkit.updateFirebaseProperty(getUniversalWidgetId(), e.getPropertyName(), e.getOldValue(),
-				e.getNewValue());
-
-	}
-
-	@Override
-	public void updateLocalUI(String propertyName, Object newValue) {
+	public void collaborativePropertyChanged(String propertyName, Object newValue) {
 		switch (propertyName) {
 		case TEXT_PROPERTY:
 			setText((String) newValue);

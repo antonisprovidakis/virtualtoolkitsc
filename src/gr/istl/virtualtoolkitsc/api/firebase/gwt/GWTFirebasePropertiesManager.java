@@ -8,8 +8,8 @@ import com.github.spirylics.xgwt.firebase.Event;
 import com.github.spirylics.xgwt.firebase.database.Reference;
 import com.github.spirylics.xgwt.firebase.database.XDataSnapshot;
 
+import gr.istl.virtualtoolkitsc.api.firebase.CollaborativeWidget;
 import gr.istl.virtualtoolkitsc.api.firebase.FirebasePropertiesManager;
-import gr.istl.virtualtoolkitsc.widgets.CollaborativeWidget;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class GWTFirebasePropertiesManager extends FirebasePropertiesManager {
@@ -36,21 +36,14 @@ public class GWTFirebasePropertiesManager extends FirebasePropertiesManager {
 
 	@Override
 	public void createValueEventListener(final String widgetId, final String propertyName) {
-		Arg<XDataSnapshot> vel = new Arg<XDataSnapshot>() {
+		CollaborativeWidget cw = (CollaborativeWidget) VirtualToolkit.getDefaultObjectByID(widgetId);
 
-			@Override
-			public void e(XDataSnapshot xData) {
-				if (xData.dataSnapshot.val() != null) {
-					CollaborativeWidget cw = (CollaborativeWidget) VirtualToolkit.getDefaultObjectByID(widgetId);
-					cw.updateLocalUI(propertyName, xData.dataSnapshot.val());
-				}
-			}
-		};
+		GWTFirebaseValueEventHandler veh = new GWTFirebaseValueEventHandler(cw, propertyName);
 
 		Reference dbRef = (Reference) VirtualToolkit.getDefaultFirebaseSyncManager().getDBRefForWidgetId(widgetId);
-		dbRef.child(propertyName).xOn(Event.value, vel);
+		dbRef.child(propertyName).xOn(Event.value, veh);
 
-		valueEventListenerMap.put(widgetId + "_" + propertyName, vel);
+		valueEventListenerMap.put(widgetId + "_" + propertyName, veh);
 	}
 
 	@Override

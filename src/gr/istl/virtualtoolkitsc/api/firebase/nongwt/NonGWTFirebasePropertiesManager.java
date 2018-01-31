@@ -3,13 +3,11 @@ package gr.istl.virtualtoolkitsc.api.firebase.nongwt;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import gr.istl.virtualtoolkitsc.api.firebase.CollaborativeWidget;
 import gr.istl.virtualtoolkitsc.api.firebase.FirebasePropertiesManager;
-import gr.istl.virtualtoolkitsc.widgets.CollaborativeWidget;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class NonGWTFirebasePropertiesManager extends FirebasePropertiesManager {
@@ -36,26 +34,15 @@ public class NonGWTFirebasePropertiesManager extends FirebasePropertiesManager {
 
 	@Override
 	public void createValueEventListener(String widgetId, String propertyName) {
-		ValueEventListener vel = new ValueEventListener() {
+		CollaborativeWidget cw = (CollaborativeWidget) VirtualToolkit.getDefaultObjectByID(widgetId);
 
-			@Override
-			public void onDataChange(DataSnapshot snapshot) {
-				if (snapshot.getValue() != null) {
-					CollaborativeWidget cw = (CollaborativeWidget) VirtualToolkit.getDefaultObjectByID(widgetId);
-					cw.updateLocalUI(propertyName, snapshot.getValue());
-				}
-			}
-
-			@Override
-			public void onCancelled(DatabaseError error) {
-			}
-		};
+		NonGWTFirebaseValueEventHandler veh = new NonGWTFirebaseValueEventHandler(cw, propertyName);
 
 		DatabaseReference dbRef = (DatabaseReference) VirtualToolkit.getDefaultFirebaseSyncManager()
 				.getDBRefForWidgetId(widgetId);
-		dbRef.child(propertyName).addValueEventListener(vel);
+		dbRef.child(propertyName).addValueEventListener(veh);
 
-		valueEventListenerMap.put(widgetId + "_" + propertyName, vel);
+		valueEventListenerMap.put(widgetId + "_" + propertyName, veh);
 	}
 
 	@Override
