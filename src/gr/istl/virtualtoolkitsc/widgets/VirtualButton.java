@@ -14,17 +14,9 @@ public interface VirtualButton extends VirtualComponent, CollaborativeWidget {
 	public void setText(String text);
 
 	public String getText();
-	
-	public void setPressed(boolean pressed);
-	
-	public boolean isPressed();
-	
+
 	public void addStyleName(String name);
 
 	public void removeStyleName(String name);
-	
-	public boolean getIsCollaborativeText();
-	
-	public void setIsCollaborativeText(boolean collab);
-	
+
 }

@@ -26,24 +26,15 @@ public final class UnifiedUISpec {
 		frame.setLayout(vl);
 
 		final VirtualButton vb1 = ButtonSelector.createButton("VB1");
-		vb1.setIsCollaborativeText(true);
 
 		final VirtualButton vb2 = ButtonSelector.createButton("VB2");
-		vb2.setIsCollaborativeText(true);
+		vb2.setCollaborativeEnabled(true);
 
 		vb1.addActionListener(new VirtualActionListener() {
 
 			@Override
 			public void actionPerformed(VirtualActionEvent e) {
-				vb2.setText("Changed by 1");
-			}
-		});
-		
-		vb2.addActionListener(new VirtualActionListener() {
-
-			@Override
-			public void actionPerformed(VirtualActionEvent e) {
-				vb1.setText("Changed by 2");
+				vb2.setEnabled(!vb2.isEnabled());
 			}
 		});
 
@@ -59,7 +50,7 @@ public final class UnifiedUISpec {
 		VirtualToolkit virtualToolkit = null;
 
 		virtualToolkit = new SwingToolkit(true);
-//		 virtualToolkit = new AWTToolkit(true);
+		// virtualToolkit = new AWTToolkit(true);
 
 		UnifiedUISpec.engageDialogue(virtualToolkit);
 	}

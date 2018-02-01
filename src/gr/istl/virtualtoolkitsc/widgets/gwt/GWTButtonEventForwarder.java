@@ -3,12 +3,8 @@ package gr.istl.virtualtoolkitsc.widgets.gwt;
 import java.util.ArrayList;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.MouseMoveEvent;
-import com.google.gwt.event.dom.client.MouseMoveHandler;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionEvent;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseEvent;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseMoveListener;
 
 public class GWTButtonEventForwarder implements ClickHandler /*, MouseMoveHandler*/ {
 

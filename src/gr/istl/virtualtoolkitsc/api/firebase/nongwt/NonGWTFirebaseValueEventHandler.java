@@ -6,7 +6,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import gr.istl.virtualtoolkitsc.api.firebase.CollaborativeWidget;
 
-public class NonGWTFirebaseValueEventHandler implements ValueEventListener {
+public final class NonGWTFirebaseValueEventHandler implements ValueEventListener {
 
 	private final CollaborativeWidget cw;
 	private final String propertyName;

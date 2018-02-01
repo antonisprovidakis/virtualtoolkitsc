@@ -5,7 +5,7 @@ import com.github.spirylics.xgwt.firebase.database.XDataSnapshot;
 
 import gr.istl.virtualtoolkitsc.api.firebase.CollaborativeWidget;
 
-public class GWTFirebaseValueEventHandler implements Arg<XDataSnapshot> {
+public final class GWTFirebaseValueEventHandler implements Arg<XDataSnapshot> {
 	private final CollaborativeWidget cw;
 	private final String propertyName;
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualFocusListener;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseMoveListener;
 
 public interface VirtualComponent {
 
@@ -27,6 +26,14 @@ public interface VirtualComponent {
 	public void addFocusListener(VirtualFocusListener listener);
 
 	public ArrayList<VirtualFocusListener> getVirtualFocusListeners();
+
+	public boolean isEnabled();
+
+	public void setEnabled(boolean enabled);
+
+	public boolean isCollaborativeEnabled();
+
+	public void setCollaborativeEnabled(boolean collab);
 
 	// public ArrayList<VirtualMouseMoveListener> getVirtualMouseMoveListeners();
 

@@ -5,13 +5,16 @@ import java.util.ArrayList;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.Widget;
 
+import gr.istl.virtualtoolkitsc.api.firebase.CollaborativeWidget;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualFocusListener;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
 import gr.istl.virtualtoolkitsc.widgets.UniversalWidget;
 import gr.istl.virtualtoolkitsc.widgets.VirtualComponent;
 import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
-public abstract class GWTComponent extends UniversalWidget implements VirtualComponent {
+public abstract class GWTComponent extends UniversalWidget implements VirtualComponent, CollaborativeWidget {
+
+	public final static String ENABLED_COLLAB_PROPERTY = "enabled";
 
 	private ArrayList<VirtualMouseListener> vMouseListeners = new ArrayList<VirtualMouseListener>();
 	private ArrayList<VirtualFocusListener> vFocusListeners = new ArrayList<VirtualFocusListener>();
@@ -30,15 +33,16 @@ public abstract class GWTComponent extends UniversalWidget implements VirtualCom
 	@Override
 	protected void init() {
 		super.init();
-		GWTComponentEventForwarder forwarder = new GWTComponentEventForwarder(this);
 
 		if (getWidget() instanceof FocusWidget) {
-			((FocusWidget) getWidget()).addMouseDownHandler(forwarder);
-			((FocusWidget) getWidget()).addMouseUpHandler(forwarder);
-			((FocusWidget) getWidget()).addFocusHandler(forwarder);
-			((FocusWidget) getWidget()).addBlurHandler(forwarder);
-		}
+			FocusWidget fw = ((FocusWidget) getWidget());
 
+			GWTComponentEventForwarder forwarder = new GWTComponentEventForwarder(this);
+			fw.addMouseDownHandler(forwarder);
+			fw.addMouseUpHandler(forwarder);
+			fw.addFocusHandler(forwarder);
+			fw.addBlurHandler(forwarder);
+		}
 	}
 
 	public Widget getGWTComponent() {
@@ -115,5 +119,49 @@ public abstract class GWTComponent extends UniversalWidget implements VirtualCom
 	// public void addMouseTrackListener(VirtualMouseListener listener) {
 	// addMouseListener(listener);
 	// }
+
+	@Override
+	public boolean isEnabled() {
+		if (getWidget() instanceof FocusWidget) {
+			return ((FocusWidget) getWidget()).isEnabled();
+		}
+
+		return true;
+	}
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		if (getWidget() instanceof FocusWidget) {
+			boolean oldValue = isEnabled();
+			((FocusWidget) getWidget()).setEnabled(enabled);
+			VirtualToolkit.notifyPropertyChangeListeners(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY, oldValue,
+					isEnabled());
+		}
+	}
+
+	@Override
+	public boolean isCollaborativeEnabled() {
+		return VirtualToolkit.isPropertyMonitored(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY);
+	}
+
+	@Override
+	public void setCollaborativeEnabled(boolean collab) {
+		if (collab) {
+			VirtualToolkit.startMonitoringChanges(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY);
+		} else {
+			VirtualToolkit.stopMonitoringChanges(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY);
+		}
+	}
+
+	@Override
+	public void collaborativePropertyChanged(String propertyName, Object newValue) {
+		switch (propertyName) {
+		case ENABLED_COLLAB_PROPERTY:
+			setEnabled((boolean) newValue);
+			break;
+		default:
+			break;
+		}
+	}
 
 }

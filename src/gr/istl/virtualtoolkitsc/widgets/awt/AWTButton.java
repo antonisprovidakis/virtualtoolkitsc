@@ -5,11 +5,8 @@ import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
-import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class AWTButton extends AWTComponent implements VirtualButton {
-
-	public final static String TEXT_PROPERTY = "text";
 
 	private ArrayList<VirtualActionListener> vActionListeners = new ArrayList<VirtualActionListener>();
 
@@ -39,9 +36,7 @@ public class AWTButton extends AWTComponent implements VirtualButton {
 
 	@Override
 	public void setText(String text) {
-		String oldValue = getText();
 		getButton().setLabel(text);
-		VirtualToolkit.notifyPropertyChangeListeners(getUniversalWidgetId(), TEXT_PROPERTY, oldValue, text);
 	}
 
 	@Override
@@ -50,47 +45,11 @@ public class AWTButton extends AWTComponent implements VirtualButton {
 	}
 
 	@Override
-	public boolean isPressed() {
-		// TODO: implement
-		return false;
-	}
-
-	@Override
-	public void setPressed(boolean pressed) {
-		// TODO: implement
-	}
-
-	@Override
 	public void addStyleName(String name) {
 	}
 
 	@Override
 	public void removeStyleName(String name) {
-	}
-
-	@Override
-	public boolean getIsCollaborativeText() {
-		return VirtualToolkit.isPropertyMonitored(getUniversalWidgetId(), TEXT_PROPERTY);
-	}
-
-	@Override
-	public void setIsCollaborativeText(boolean collab) {
-		if (collab) {
-			VirtualToolkit.startMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
-		} else {
-			VirtualToolkit.stopMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
-		}
-	}
-
-	@Override
-	public void collaborativePropertyChanged(String propertyName, Object newValue) {
-		switch (propertyName) {
-		case TEXT_PROPERTY:
-			setText((String) newValue);
-			break;
-		default:
-			break;
-		}
 	}
 
 }

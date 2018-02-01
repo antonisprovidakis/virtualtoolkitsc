@@ -6,11 +6,8 @@ import javax.swing.AbstractButton;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
-import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class SwingButton extends SwingComponent implements VirtualButton {
-
-	public final static String TEXT_PROPERTY = "text";
 
 	private ArrayList<VirtualActionListener> vActionListeners = new ArrayList<VirtualActionListener>();
 
@@ -40,9 +37,7 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 
 	@Override
 	public void setText(String text) {
-		String oldValue = getText();
 		getButton().setText(text);
-		VirtualToolkit.notifyPropertyChangeListeners(getUniversalWidgetId(), TEXT_PROPERTY, oldValue, text);
 	}
 
 	@Override
@@ -51,46 +46,11 @@ public class SwingButton extends SwingComponent implements VirtualButton {
 	}
 
 	@Override
-	public boolean isPressed() {
-		return getButton().getModel().isPressed();
-	}
-
-	@Override
-	public void setPressed(boolean pressed) {
-		getButton().getModel().setPressed(pressed);
-	}
-
-	@Override
 	public void addStyleName(String name) {
 	}
 
 	@Override
 	public void removeStyleName(String name) {
-	}
-
-	@Override
-	public boolean getIsCollaborativeText() {
-		return VirtualToolkit.isPropertyMonitored(getUniversalWidgetId(), TEXT_PROPERTY);
-	}
-
-	@Override
-	public void setIsCollaborativeText(boolean collab) {
-		if (collab) {
-			VirtualToolkit.startMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
-		} else {
-			VirtualToolkit.stopMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
-		}
-	}
-
-	@Override
-	public void collaborativePropertyChanged(String propertyName, Object newValue) {
-		switch (propertyName) {
-		case TEXT_PROPERTY:
-			setText((String) newValue);
-			break;
-		default:
-			break;
-		}
 	}
 
 }

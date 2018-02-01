@@ -15,7 +15,6 @@ import gr.istl.virtualtoolkitsc.api.listeners.VirtualFocusEvent;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualFocusListener;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseEvent;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
-import gr.istl.virtualtoolkitsc.widgets.awt.AWTEventPackager;
 
 public class GWTComponentEventForwarder implements MouseDownHandler, MouseUpHandler, FocusHandler, BlurHandler {
 

@@ -6,13 +6,8 @@ import com.google.gwt.user.client.ui.Button;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionListener;
 import gr.istl.virtualtoolkitsc.widgets.VirtualButton;
-import gr.istl.virtualtoolkitsc.widgets.VirtualToolkit;
 
 public class GWTButton extends GWTComponent implements VirtualButton {
-
-	public final static String TEXT_PROPERTY = "text";
-
-	private boolean pressed = false;
 
 	private ArrayList<VirtualActionListener> vActionListeners = new ArrayList<VirtualActionListener>();
 	// private ArrayList<VirtualMouseMoveListener> vMouseMoveListeners = new
@@ -53,31 +48,12 @@ public class GWTButton extends GWTComponent implements VirtualButton {
 
 	@Override
 	public void setText(String text) {
-		String oldValue = getText();
 		getButton().setText(text);
-		VirtualToolkit.notifyPropertyChangeListeners(getUniversalWidgetId(), TEXT_PROPERTY, oldValue, text);
 	}
 
 	@Override
 	public String getText() {
 		return getButton().getText();
-	}
-
-	@Override
-	public boolean isPressed() {
-		return pressed;
-	}
-
-	@Override
-	public void setPressed(boolean pressed) {
-
-		if (pressed) {
-			addStyleName("gwt-Button-pressed");
-		} else {
-			removeStyleName("gwt-Button-pressed");
-		}
-
-		this.pressed = pressed;
 	}
 
 	@Override
@@ -88,31 +64,6 @@ public class GWTButton extends GWTComponent implements VirtualButton {
 	@Override
 	public void removeStyleName(String name) {
 		getButton().removeStyleName(name);
-	}
-
-	@Override
-	public boolean getIsCollaborativeText() {
-		return VirtualToolkit.isPropertyMonitored(getUniversalWidgetId(), TEXT_PROPERTY);
-	}
-
-	@Override
-	public void setIsCollaborativeText(boolean collab) {
-		if (collab) {
-			VirtualToolkit.startMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
-		} else {
-			VirtualToolkit.stopMonitoringChanges(getUniversalWidgetId(), TEXT_PROPERTY);
-		}
-	}
-
-	@Override
-	public void collaborativePropertyChanged(String propertyName, Object newValue) {
-		switch (propertyName) {
-		case TEXT_PROPERTY:
-			setText((String) newValue);
-			break;
-		default:
-			break;
-		}
 	}
 
 }
