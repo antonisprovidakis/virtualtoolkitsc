@@ -4,7 +4,6 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import gr.istl.virtualtoolkitsc.widgets.VirtualComponent;
-import gr.istl.virtualtoolkitsc.widgets.VirtualContainer;
 import gr.istl.virtualtoolkitsc.widgets.VirtualFrame;
 import gr.istl.virtualtoolkitsc.widgets.VirtualLayout;
 

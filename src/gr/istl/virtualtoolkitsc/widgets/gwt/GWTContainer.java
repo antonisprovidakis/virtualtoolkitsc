@@ -1,6 +1,5 @@
 package gr.istl.virtualtoolkitsc.widgets.gwt;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
