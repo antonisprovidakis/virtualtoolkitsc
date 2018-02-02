@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.util.ArrayList;
 
 import gr.istl.virtualtoolkitsc.api.firebase.CollaborativeWidget;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualFocusListener;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
 import gr.istl.virtualtoolkitsc.widgets.UniversalWidget;
 import gr.istl.virtualtoolkitsc.widgets.VirtualComponent;
@@ -17,7 +16,6 @@ public abstract class AWTComponent extends UniversalWidget implements VirtualCom
 	private ArrayList<VirtualMouseListener> vMouseListeners = new ArrayList<VirtualMouseListener>();
 	// private ArrayList<VirtualMouseMoveListener> vMouseMoveListeners = new
 	// ArrayList<VirtualMouseMoveListener>();
-	private ArrayList<VirtualFocusListener> vFocusListeners = new ArrayList<VirtualFocusListener>();
 
 	public AWTComponent(Component component) {
 		super(component);
@@ -27,9 +25,7 @@ public abstract class AWTComponent extends UniversalWidget implements VirtualCom
 	protected void init() {
 		super.init();
 
-		AWTComponentEventForwarder forwarder = new AWTComponentEventForwarder(this);
-		getComponent().addMouseListener(forwarder);
-		getComponent().addFocusListener(forwarder);
+		getComponent().addMouseListener(new AWTComponentEventForwarder(this));
 	}
 
 	public Component getAWTComponent() {
@@ -83,16 +79,6 @@ public abstract class AWTComponent extends UniversalWidget implements VirtualCom
 		return vMouseListeners;
 	}
 
-	@Override
-	public void addFocusListener(VirtualFocusListener listener) {
-		vFocusListeners.add(listener);
-	}
-
-	@Override
-	public ArrayList<VirtualFocusListener> getVirtualFocusListeners() {
-		return vFocusListeners;
-	}
-
 	// @Override
 	// public void addMouseMoveListener(VirtualMouseMoveListener listener) {
 	// vMouseMoveListeners.add(listener);
@@ -117,20 +103,21 @@ public abstract class AWTComponent extends UniversalWidget implements VirtualCom
 	public void setEnabled(boolean enabled) {
 		boolean oldValue = isEnabled();
 		getAWTComponent().setEnabled(enabled);
-		VirtualToolkit.notifyPropertyChangeListeners(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY, oldValue, isEnabled());
+		VirtualToolkit.defaultNotifyPropertyChangeListeners(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY, oldValue,
+				isEnabled());
 	}
 
 	@Override
 	public boolean isCollaborativeEnabled() {
-		return VirtualToolkit.isPropertyMonitored(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY);
+		return VirtualToolkit.isDefaultPropertyMonitored(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY);
 	}
 
 	@Override
 	public void setCollaborativeEnabled(boolean collab) {
 		if (collab) {
-			VirtualToolkit.startMonitoringChanges(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY);
+			VirtualToolkit.defaultStartMonitoringChanges(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY);
 		} else {
-			VirtualToolkit.stopMonitoringChanges(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY);
+			VirtualToolkit.defaultStopMonitoringChanges(getUniversalWidgetId(), ENABLED_COLLAB_PROPERTY);
 		}
 	}
 

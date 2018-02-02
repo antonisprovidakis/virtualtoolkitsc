@@ -1,6 +1,7 @@
 package gr.istl.virtualtoolkitsc.api.firebase.gwt;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import com.github.spirylics.xgwt.firebase.Config;
 import com.github.spirylics.xgwt.firebase.Firebase;
@@ -14,7 +15,7 @@ public class GWTFirebaseSyncManager extends FirebaseSyncManager {
 
 	private final static String SESSION_ID = "session1";
 
-	private transient HashMap<String, Reference> widgetIdToDatabaseReference = new HashMap<String, Reference>();
+	private transient Map<String, Reference> widgetIdToDatabaseReference = new HashMap<String, Reference>();
 	private Database database = null;
 
 	public GWTFirebaseSyncManager() {

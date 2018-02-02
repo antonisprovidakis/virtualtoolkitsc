@@ -1,17 +1,13 @@
 package gr.istl.virtualtoolkitsc.widgets.awt;
 
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualFocusEvent;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualFocusListener;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseEvent;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
 
-public class AWTComponentEventForwarder implements MouseListener, FocusListener {
+public class AWTComponentEventForwarder implements MouseListener {
 
 	private AWTComponent component;
 
@@ -71,28 +67,6 @@ public class AWTComponentEventForwarder implements MouseListener, FocusListener 
 
 		for (VirtualMouseListener listener : listeners) {
 			listener.mouseReleased(virtualEvent);
-		}
-	}
-
-	@Override
-	public void focusGained(FocusEvent e) {
-		VirtualFocusEvent virtualFocusEvent = AWTEventPackager.convert(e, VirtualFocusEvent.Focus_gain);
-
-		ArrayList<VirtualFocusListener> listeners = component.getVirtualFocusListeners();
-
-		for (VirtualFocusListener listener : listeners) {
-			listener.focusGained(virtualFocusEvent);
-		}
-	}
-
-	@Override
-	public void focusLost(FocusEvent e) {
-		VirtualFocusEvent virtualFocusEvent = AWTEventPackager.convert(e, VirtualFocusEvent.Focus_lost);
-
-		ArrayList<VirtualFocusListener> listeners = component.getVirtualFocusListeners();
-
-		for (VirtualFocusListener listener : listeners) {
-			listener.focusLost(virtualFocusEvent);
 		}
 	}
 

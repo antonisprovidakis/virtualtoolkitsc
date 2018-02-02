@@ -26,16 +26,16 @@ public abstract class VirtualToolkit {
 		defaultToolkit = toolkit;
 	}
 
+	public static FirebaseSyncManager getDefaultFirebaseSyncManager() {
+		return defaultToolkit.getFirebaseSyncManager();
+	}
+
 	public FirebaseSyncManager getFirebaseSyncManager() {
 		return syncManager;
 	}
 
 	public static boolean isCollaborative() {
 		return getDefaultFirebaseSyncManager() != null;
-	}
-
-	public static FirebaseSyncManager getDefaultFirebaseSyncManager() {
-		return defaultToolkit.getFirebaseSyncManager();
 	}
 
 	public void setDefaultCollaborative(boolean collab) {
@@ -52,95 +52,96 @@ public abstract class VirtualToolkit {
 
 	public abstract FirebaseSyncManager createFirebaseSyncManager();
 
-	public static void defaultAssociate(String widgetID, Object obj) {
-		defaultToolkit.associate(widgetID, obj);
+	public static void defaultAssociate(String widgetId, Object obj) {
+		defaultToolkit.associate(widgetId, obj);
 	}
 
-	public void associate(String widgetID, Object obj) {
-		idToWidget.put(widgetID, obj);
+	public void associate(String widgetId, Object obj) {
+		idToWidget.put(widgetId, obj);
 	}
 
-	public static void defaultReassociate(String oldID, String newID, Object obj) {
-		defaultToolkit.reassociate(oldID, newID, obj);
+	public static void defaultReassociate(String oldId, String newId, Object obj) {
+		defaultToolkit.reassociate(oldId, newId, obj);
 	}
 
-	public void reassociate(String oldID, String newID, Object obj) {
-		if (newID != null) {
-			if (oldID != null) {
-				idToWidget.remove(oldID);
+	public void reassociate(String oldId, String newId, Object obj) {
+		if (newId != null) {
+			if (oldId != null) {
+				idToWidget.remove(oldId);
 			}
-			idToWidget.put(newID, obj);
+			idToWidget.put(newId, obj);
 		}
 	}
 
-	public static Object getDefaultObjectByID(String widgetID) {
-		return defaultToolkit.getObjectByID(widgetID);
+	public static Object getDefaultObjectByID(String widgetId) {
+		return defaultToolkit.getObjectByID(widgetId);
 	}
 
-	public Object getObjectByID(String widgetID) {
-		return idToWidget.get(widgetID);
+	public Object getObjectByID(String widgetId) {
+		return idToWidget.get(widgetId);
 	}
 
-	public static String createNewWidgetId() {
-		return defaultToolkit.getWidgetId();
+	public static String defaultCreateNewWidgetId() {
+		return defaultToolkit.createNewWidgetId();
 	}
 
-	public synchronized String getWidgetId() {
+	public synchronized String createNewWidgetId() {
 		return "widget" + idToWidget.size();
 	}
 
-	public static void updateFirebaseProperty(String widgetId, String propertyName, Object oldValue, Object newValue) {
+	public static void defaultUpdateFirebaseProperty(String widgetId, String propertyName, Object oldValue, Object newValue) {
 		if (isCollaborative()) {
-			defaultToolkit.execUpdateFirebaseProperty(widgetId, propertyName, oldValue, newValue);
+			defaultToolkit.updateFirebaseProperty(widgetId, propertyName, oldValue, newValue);
 		}
 	}
 
-	public void execUpdateFirebaseProperty(String widgetId, String propertyName, Object oldValue, Object newValue) {
-		syncManager.updateProperty(widgetId, propertyName, oldValue, newValue);
+	public void updateFirebaseProperty(String widgetId, String propertyName, Object oldValue, Object newValue) {
+		syncManager.getFirebasePropertiesManager().updateProperty(widgetId, propertyName, oldValue, newValue);
 	}
 
-	public static void notifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue,
+	public static void defaultNotifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue,
 			Object newValue) {
 		if (isCollaborative()) {
-			defaultToolkit.execNotifyPropertyChangeListeners(widgetId, propertyName, oldValue, newValue);
+			defaultToolkit.notifyPropertyChangeListeners(widgetId, propertyName, oldValue, newValue);
 		}
 	}
 
-	public void execNotifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue,
+	public void notifyPropertyChangeListeners(String widgetId, String propertyName, Object oldValue,
 			Object newValue) {
-		syncManager.notifyPropertyChangeListeners(widgetId, propertyName, oldValue, newValue);
+		syncManager.getFirebasePropertiesManager().notifyPropertyChangeListeners(widgetId, propertyName, oldValue,
+				newValue);
 	}
 
-	public static void startMonitoringChanges(String widgetId, String propertyName) {
+	public static void defaultStartMonitoringChanges(String widgetId, String propertyName) {
 		if (isCollaborative()) {
-			defaultToolkit.execStartMonitoringChanges(widgetId, propertyName);
+			defaultToolkit.startMonitoringChanges(widgetId, propertyName);
 		}
 	}
 
-	public void execStartMonitoringChanges(String widgetId, String propertyName) {
-		syncManager.startMonitoringProperty(widgetId, propertyName);
+	public void startMonitoringChanges(String widgetId, String propertyName) {
+		syncManager.getFirebasePropertiesManager().startMonitoringProperty(widgetId, propertyName);
 	}
 
-	public static void stopMonitoringChanges(String widgetId, String propertyName) {
+	public static void defaultStopMonitoringChanges(String widgetId, String propertyName) {
 		if (isCollaborative()) {
-			defaultToolkit.execStopMonitoringChanges(widgetId, propertyName);
+			defaultToolkit.stopMonitoringChanges(widgetId, propertyName);
 		}
 	}
 
-	public void execStopMonitoringChanges(String widgetId, String propertyName) {
-		syncManager.stopMonitoringProperty(widgetId, propertyName);
+	public void stopMonitoringChanges(String widgetId, String propertyName) {
+		syncManager.getFirebasePropertiesManager().stopMonitoringProperty(widgetId, propertyName);
 	}
 
-	public static boolean isPropertyMonitored(String widgetId, String propertyName) {
+	public static boolean isDefaultPropertyMonitored(String widgetId, String propertyName) {
 		if (isCollaborative()) {
-			return defaultToolkit.execIsPropertyMonitored(widgetId, propertyName);
+			return defaultToolkit.isPropertyMonitored(widgetId, propertyName);
 		}
 
 		return false;
 	}
 
-	public boolean execIsPropertyMonitored(String widgetId, String propertyName) {
-		return syncManager.isPropertyMonitored(widgetId, propertyName);
+	public boolean isPropertyMonitored(String widgetId, String propertyName) {
+		return syncManager.getFirebasePropertiesManager().isPropertyMonitored(widgetId, propertyName);
 	}
 
 }

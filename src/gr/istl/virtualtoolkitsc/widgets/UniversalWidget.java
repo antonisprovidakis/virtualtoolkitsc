@@ -17,7 +17,7 @@ public abstract class UniversalWidget {
 		this.component = component;
 		addComponentIntoComponentsToUniversalWidgetsMap(component, this);
 //		universalWidgetId = createNewWidgetId();
-		universalWidgetId = VirtualToolkit.createNewWidgetId();
+		universalWidgetId = VirtualToolkit.defaultCreateNewWidgetId();
 		VirtualToolkit.defaultAssociate(universalWidgetId, this);
 		init();
 	}
@@ -29,12 +29,12 @@ public abstract class UniversalWidget {
 		}
 	}
 
-	private static void addComponentIntoComponentsToUniversalWidgetsMap(Object c, UniversalWidget classInstance) {
+	private static void addComponentIntoComponentsToUniversalWidgetsMap(Object c, UniversalWidget widgetInstance) {
 		if (c == null) {
 			return;
 		}
 
-		componentsToUniversalWidgets.put(c, classInstance);
+		componentsToUniversalWidgets.put(c, widgetInstance);
 	}
 
 	public static UniversalWidget universalWidget(Object c) {
@@ -53,9 +53,5 @@ public abstract class UniversalWidget {
 	public void setUniversalWidgetId(String id) {
 		universalWidgetId = id;
 	}
-
-//	private String createNewWidgetId() {
-//		return "widget" + componentsToUniversalWidgets.size();
-//	}
 
 }

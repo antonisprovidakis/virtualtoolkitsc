@@ -1,11 +1,9 @@
 package gr.istl.virtualtoolkitsc.widgets.awt;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.FocusEvent;
 import java.awt.event.MouseEvent;
 
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualActionEvent;
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualFocusEvent;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseEvent;
 import gr.istl.virtualtoolkitsc.widgets.UniversalWidget;
 
@@ -40,13 +38,5 @@ public class AWTEventPackager {
 
 		return virtualMouseEvent;
 	}
-	
-	public static VirtualFocusEvent convert(FocusEvent event, int type) {
-		VirtualFocusEvent virtualFocusEvent = new VirtualFocusEvent(type);
-		
-		virtualFocusEvent.setSource(event.getSource());
-		virtualFocusEvent.setWhen(System.currentTimeMillis());
-		
-		return virtualFocusEvent;
-	}
+
 }

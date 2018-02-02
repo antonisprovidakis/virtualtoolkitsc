@@ -30,7 +30,7 @@ public abstract class FirebasePropertiesManager {
 		createValueEventListener(widgetId, propertyName);
 	}
 
-	public void createFirebasePropertyChangeListener(String widgetId, String propertyName) {
+	private void createFirebasePropertyChangeListener(String widgetId, String propertyName) {
 		createPropertyChangeSupport(widgetId);
 
 		PropertyChangeSupport pcs = firebasePropertyChangeSupportMap.get(widgetId);
@@ -40,7 +40,7 @@ public abstract class FirebasePropertiesManager {
 		}
 	}
 
-	public void createPropertyChangeSupport(String widgetId) {
+	private void createPropertyChangeSupport(String widgetId) {
 		if (firebasePropertyChangeSupportMap.containsKey(widgetId)) {
 			return;
 		}
@@ -49,14 +49,14 @@ public abstract class FirebasePropertiesManager {
 				new PropertyChangeSupport(VirtualToolkit.getDefaultObjectByID(widgetId)));
 	}
 
-	public abstract void createValueEventListener(String widgetId, String propertyName);
+	protected abstract void createValueEventListener(String widgetId, String propertyName);
 
 	public void stopMonitoringProperty(String widgetId, String propertyName) {
 		destroyFirebasePropertyChangeListener(widgetId, propertyName);
 		destroyValueEventListener(widgetId, propertyName);
 	}
 
-	public void destroyFirebasePropertyChangeListener(String widgetId, String propertyName) {
+	private void destroyFirebasePropertyChangeListener(String widgetId, String propertyName) {
 		PropertyChangeSupport pcs = firebasePropertyChangeSupportMap.get(widgetId);
 
 		if (pcs == null) {
@@ -70,7 +70,7 @@ public abstract class FirebasePropertiesManager {
 		destroyPropertyChangeSupport(widgetId);
 	}
 
-	public void destroyPropertyChangeSupport(String widgetId) {
+	private void destroyPropertyChangeSupport(String widgetId) {
 		if (firebasePropertyChangeSupportMap.get(widgetId) == null) {
 			return;
 		}
@@ -84,7 +84,7 @@ public abstract class FirebasePropertiesManager {
 		firebasePropertyChangeSupportMap.remove(widgetId);
 	}
 
-	public abstract void destroyValueEventListener(String widgetId, String propertyName);
+	protected abstract void destroyValueEventListener(String widgetId, String propertyName);
 
 	public boolean isPropertyMonitored(String widgetId, String propertyName) {
 		PropertyChangeSupport pcs = firebasePropertyChangeSupportMap.get(widgetId);

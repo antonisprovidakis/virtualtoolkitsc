@@ -2,7 +2,6 @@ package gr.istl.virtualtoolkitsc.widgets;
 
 import java.util.ArrayList;
 
-import gr.istl.virtualtoolkitsc.api.listeners.VirtualFocusListener;
 import gr.istl.virtualtoolkitsc.api.listeners.VirtualMouseListener;
 
 public interface VirtualComponent {
@@ -22,10 +21,6 @@ public interface VirtualComponent {
 	public void addMouseListener(VirtualMouseListener listener);
 
 	public ArrayList<VirtualMouseListener> getVirtualMouseListeners();
-
-	public void addFocusListener(VirtualFocusListener listener);
-
-	public ArrayList<VirtualFocusListener> getVirtualFocusListeners();
 
 	public boolean isEnabled();
 

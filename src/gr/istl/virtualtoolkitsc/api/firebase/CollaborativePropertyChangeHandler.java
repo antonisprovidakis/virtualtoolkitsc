@@ -15,7 +15,7 @@ public class CollaborativePropertyChangeHandler implements PropertyChangeListene
 
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
-		VirtualToolkit.updateFirebaseProperty(widgetId, e.getPropertyName(), e.getOldValue(), e.getNewValue());
+		VirtualToolkit.defaultUpdateFirebaseProperty(widgetId, e.getPropertyName(), e.getOldValue(), e.getNewValue());
 	}
 
 }

@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
@@ -20,7 +21,7 @@ public class NonGWTFirebaseSyncManager extends FirebaseSyncManager {
 	private final static String DB_URL = "https://virtualtoolkitsc.firebaseio.com/";
 	private final static String SESSION_ID = "session1";
 
-	private transient HashMap<String, DatabaseReference> widgetIdToDatabaseReference = new HashMap<String, DatabaseReference>();
+	private transient Map<String, DatabaseReference> widgetIdToDatabaseReference = new HashMap<String, DatabaseReference>();
 	private FirebaseDatabase database = null;
 
 	public NonGWTFirebaseSyncManager() {
