@@ -17,8 +17,13 @@ import gr.istl.virtualtoolkitsc.api.firebase.FirebaseSyncManager;
 
 public class NonGWTFirebaseSyncManager extends FirebaseSyncManager {
 
-	private final static String CREDENTIALS_PATH = "virtualtoolkitsc-firebase-credentials.json";
-	private final static String DB_URL = "https://virtualtoolkitsc.firebaseio.com/";
+ 	// found in project root folder level
+ 	// replace with your own
+	private final static String CREDENTIALS_PATH = "path/to/serviceAccountKey.json";
+
+	// replace with your own project database url
+	private final static String DB_URL = "https://[projectId].firebaseio.com/";
+	
 	private final static String SESSION_ID = "session1";
 
 	private transient Map<String, DatabaseReference> widgetIdToDatabaseReference = new HashMap<String, DatabaseReference>();
