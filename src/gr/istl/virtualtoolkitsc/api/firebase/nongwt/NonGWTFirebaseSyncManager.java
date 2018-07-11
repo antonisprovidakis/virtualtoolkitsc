@@ -17,10 +17,9 @@ import gr.istl.virtualtoolkitsc.api.firebase.FirebaseSyncManager;
 
 public class NonGWTFirebaseSyncManager extends FirebaseSyncManager {
 
- 	// found in project root folder level
- 	// replace with your own
+	// UPDATE MANUALLY
+ 	// found in project root folder level, replace with your own
 	private final static String CREDENTIALS_PATH = "path/to/serviceAccountKey.json";
-
 	// replace with your own project database url
 	private final static String DB_URL = "https://[projectId].firebaseio.com/";
 	
