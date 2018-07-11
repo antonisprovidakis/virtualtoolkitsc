@@ -25,10 +25,12 @@ public class GWTFirebaseSyncManager extends FirebaseSyncManager {
 
 	private Database createDatabase() {
 		Config config = new Config();
-		config.setApiKey("AIzaSyAA_xSvC043XQeOpAbW-f3O7LUGQIcz3bA");
-		config.setAuthDomain("virtualtoolkitsc.firebaseapp.com");
-		config.setDatabaseURL("https://virtualtoolkitsc.firebaseio.com");
-		config.setStorageBucket("virtualtoolkitsc.appspot.com");
+
+		// UPDATE MANUALLY
+		config.setApiKey("some_api_key");
+		config.setAuthDomain("some_auth_domain");
+		config.setDatabaseURL("some_database_url");
+		config.setStorageBucket("some_storage_bucket");
 
 		Firebase firebase = Firebase.initializeApp(config);
 
